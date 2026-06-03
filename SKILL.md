@@ -46,7 +46,7 @@ description: Plan-gated academic manuscript revision workflow for LaTeX papers, 
 2. Draft response strategy before manuscript edits when reviewer comments are involved.
 3. Create or update the markdown plan with allowed files, allowed locations, forbidden edits, rationale, acceptance criteria, build steps, and response-letter impact.
 4. Apply only the approved plan.
-5. Build the manuscript, supplement, response letter, and redlines as applicable.
+5. Build the manuscript, supplement, response letter, cover letter, and redlines as applicable. Prefer the project build script first. If none exists, use `scripts/build_all_revision_artifacts.sh` or `scripts/build_revision_redlines.sh`.
 6. Verify locations from the final PDF before updating response-letter or proof-correction text.
 7. Record deviations, unresolved issues, and build status in the plan or audit note.
 
@@ -61,6 +61,7 @@ description: Plan-gated academic manuscript revision workflow for LaTeX papers, 
 
 - For reviewer responses, answer what changed, why it addresses the concern, and where it appears.
 - Use the current manuscript PDF for final locations. Use redlined files to identify changes, not as the only source of location truth.
+- To locate edits, search the compiled PDF with `pdftotext -layout` or `scripts/pdf_location_audit.py`. Treat extracted line numbers as search aids, not journal line numbers. Final wording should use page, section, figure/table/equation, column when visually confirmed, and paragraph-beginning anchors.
 - For proof corrections, use `Request Revisions` when any correction remains. Itemize exact location, current proof text, and corrected text.
 - Avoid unsupported claims. If a calculation or experiment was not actually performed, remove or soften the statement.
 
@@ -105,3 +106,5 @@ Read these when needed:
 - `templates/revision_plan.md` for the standard pre-edit plan template.
 - `templates/response_trace_audit.md` for response-letter verification.
 - `prompts/plan_prompt.md`, `prompts/apply_prompt.md`, and `prompts/audit_prompt.md` for strategist, executor, and auditor workflows.
+- `scripts/build_all_revision_artifacts.sh` for compiling common manuscript, supplement, response, cover, and redline artifacts.
+- `scripts/pdf_location_audit.py` for finding conservative PDF-backed location anchors.

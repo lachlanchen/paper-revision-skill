@@ -43,7 +43,7 @@
 2. 如果涉及 reviewer comments，先草拟 response strategy，再改 manuscript。
 3. 创建或更新 markdown plan，写清楚允许修改的文件、允许修改的位置、禁止修改的内容、理由、验收标准、build steps 和 response-letter 影响。
 4. 只应用已批准的计划。
-5. 根据需要编译 manuscript、supplement、response letter 和 redlines。
+5. 根据需要编译 manuscript、supplement、response letter、cover letter 和 redlines。优先使用项目已有 build script；如果没有，可以使用 `scripts/build_all_revision_artifacts.sh` 或 `scripts/build_revision_redlines.sh`。
 6. 从最终 PDF 验证位置之后，才更新 response letter 或 proof-correction 文本。
 7. 在 plan 或 audit note 中记录偏离计划的地方、未解决问题和 build 状态。
 
@@ -58,6 +58,7 @@
 
 - 对 reviewer response，要回答三个问题：改了什么、为什么能解决 concern、修改出现在什么位置。
 - 最终位置要根据当前 manuscript PDF 确认。redlined 文件用于识别修改，但不能作为唯一的位置依据。
+- 定位修改时，可以用 `pdftotext -layout` 或 `scripts/pdf_location_audit.py` 搜索编译后的 PDF。提取出的行号只能作为搜索辅助，不是期刊 manuscript line number。最终 response 中应使用页码、section、figure/table/equation、视觉确认后的 column，以及 paragraph-beginning anchor。
 - 对 proof corrections，如果仍有任何错误需要修改，应选择 `Request Revisions`。逐条写清楚准确位置、当前 proof 文本和建议修改后的文本。
 - 避免没有支持的 claim。如果某个计算或实验实际上没有做，就删除或弱化相关表述。
 
@@ -102,3 +103,5 @@
 - [`templates/revision_plan.md`](../templates/revision_plan.md)：标准的 pre-edit plan 模板。
 - [`templates/response_trace_audit.md`](../templates/response_trace_audit.md)：response-letter 验证模板。
 - [`prompts/plan_prompt.md`](../prompts/plan_prompt.md)、[`prompts/apply_prompt.md`](../prompts/apply_prompt.md) 和 [`prompts/audit_prompt.md`](../prompts/audit_prompt.md)：strategist、executor 和 auditor 工作流提示词。
+- [`scripts/build_all_revision_artifacts.sh`](../scripts/build_all_revision_artifacts.sh)：编译常见 manuscript、supplement、response、cover 和 redline artifacts。
+- [`scripts/pdf_location_audit.py`](../scripts/pdf_location_audit.py)：查找保守的 PDF-backed location anchors。

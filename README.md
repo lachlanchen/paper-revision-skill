@@ -113,7 +113,9 @@ paper-project/
 | [`prompts/plan_prompt.md`](prompts/plan_prompt.md) | Prompt for a strategist or reasoning agent |
 | [`prompts/apply_prompt.md`](prompts/apply_prompt.md) | Prompt for an execution agent |
 | [`prompts/audit_prompt.md`](prompts/audit_prompt.md) | Prompt for a PDF and response-letter auditor |
-| [`scripts/build_revision_redlines.sh`](scripts/build_revision_redlines.sh) | Generic LaTeX build and redline helper |
+| [`scripts/build_all_revision_artifacts.sh`](scripts/build_all_revision_artifacts.sh) | Generic all-artifacts build helper |
+| [`scripts/build_revision_redlines.sh`](scripts/build_revision_redlines.sh) | Generic LaTeX manuscript and redline helper |
+| [`scripts/pdf_location_audit.py`](scripts/pdf_location_audit.py) | PDF-backed location search helper |
 
 ## Three Agent Roles
 
@@ -143,7 +145,13 @@ Commit and push this work package.
 
 ## Build Helper
 
-The helper script compiles current files, generates redlines, and compiles the redlined TeX:
+The all-artifacts helper compiles common manuscript, supplement, response-letter, cover-letter, and redline files when they exist:
+
+```bash
+./scripts/build_all_revision_artifacts.sh .
+```
+
+The redline helper compiles current files, generates redlines, and compiles the redlined TeX:
 
 ```bash
 ./scripts/build_revision_redlines.sh Manuscript
@@ -158,6 +166,16 @@ REDLINED_MAIN=redlined_minor_main.tex \
 REDLINED_SM=redlined_minor_sm.tex \
 ./scripts/build_revision_redlines.sh Manuscript
 ```
+
+## PDF Location Audit
+
+Use the compiled PDF as the source of truth for response-letter locations. The helper below finds candidate page and paragraph anchors:
+
+```bash
+./scripts/pdf_location_audit.py Manuscript/main.pdf "paragraph beginning text" "Figure 2"
+```
+
+Treat extracted text line numbers as search aids, not journal line numbers. For final response letters, prefer page, section, figure/table/equation, visually confirmed column, and paragraph-beginning anchors.
 
 ## Visual Origin Guide
 
