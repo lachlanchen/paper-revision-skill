@@ -18,6 +18,8 @@
 
 - 主 README：[../README.md](../README.md)
 - Skill 文件：[../SKILL.md](../SKILL.md)
+- Skill 中文版：[SKILL.zh-Hans.md](SKILL.zh-Hans.md)
+- 安装转交说明：[../HANDOFF.md](../HANDOFF.md)
 - 可视化说明：[../docs/origin-chat.html](../docs/origin-chat.html)
 - 修改计划模板：[../templates/revision_plan.md](../templates/revision_plan.md)
 

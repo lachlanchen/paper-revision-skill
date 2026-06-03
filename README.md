@@ -100,6 +100,8 @@ paper-project/
 | Path | Use |
 | --- | --- |
 | [`SKILL.md`](SKILL.md) | Active Codex skill instructions |
+| [`HANDOFF.md`](HANDOFF.md) | Short install and handoff note for collaborators |
+| [`i18n/SKILL.zh-Hans.md`](i18n/SKILL.zh-Hans.md) | Simplified Chinese version of the skill guide |
 | [`references/plan-first-revision-method.md`](references/plan-first-revision-method.md) | Full method for plan-gated revision |
 | [`references/latex-revision-file-map.md`](references/latex-revision-file-map.md) | File conventions for latest, original, and redlined versions |
 | [`references/response-letter-proof-workflow.md`](references/response-letter-proof-workflow.md) | Response-letter and proof-correction patterns |
