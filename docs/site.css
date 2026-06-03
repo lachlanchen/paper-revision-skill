@@ -99,6 +99,10 @@
 .landing-card h2 { margin: 0 0 8px; font-size: 22px; letter-spacing: -.03em; }
 .landing-card p { margin: 0 0 14px; color: #64748b; }
 .landing-card a { font-weight: 850; }
+.landing-card.highlight-card {
+  border-color: rgba(15, 118, 110, .28);
+  background: linear-gradient(180deg, #f0fdfa, #ffffff);
+}
 @media (max-width: 760px) {
   .site-header { align-items: stretch; flex-direction: column; border-radius: 22px; }
   .site-brand { justify-content: center; }

@@ -18,6 +18,20 @@ Plan first. Edit second. Verify from the PDF. Commit the work package.
 - Visual guide: <https://lachlanchen.github.io/paper-revision-skill/origin-chat.html>
 - Active skill file: [`SKILL.md`](SKILL.md)
 - Chinese skill guide: [`i18n/SKILL.zh-Hans.md`](i18n/SKILL.zh-Hans.md)
+- **AgInTiFlow tool:** <https://flow.lazying.art>
+- **AgInTiFlow repository:** <https://github.com/lazyingart/AgInTiFlow>
+
+## Compatibility Summary
+
+| Platform | Compatibility Path |
+| --- | --- |
+| **AgInTiFlow** | **Recommended highlighted path. Install through SkillMesh with `@lazyingart/agintiflow >= 0.20.191`.** |
+| Codex | Install the full repository into `$CODEX_HOME/skills/paper-revision-skill`. |
+| Claude Code | Use [`CLAUDE.md`](CLAUDE.md), which points back to [`SKILL.md`](SKILL.md). |
+| GitHub Copilot | Use [`.github/copilot-instructions.md`](.github/copilot-instructions.md), which points back to [`SKILL.md`](SKILL.md). |
+| Gemini CLI | Use [`GEMINI.md`](GEMINI.md), which points back to [`SKILL.md`](SKILL.md). |
+
+All platform files intentionally share one workflow source: [`SKILL.md`](SKILL.md). Do not fork the revision policy separately per tool.
 
 ## Install For Codex
 
@@ -56,7 +70,13 @@ The expected behavior is that Codex reads the skill, creates a bounded Markdown 
 
 ## Install For AgInTiFlow
 
-AgInTiFlow supports this skill through SkillMesh. The root [`SKILL.md`](SKILL.md) uses Codex-style `name:` frontmatter; current AgInTiFlow can normalize that into native SkillMesh `id:` and `label:` metadata during import.
+AgInTiFlow is the highlighted integration target for this skill. It supports this repository through SkillMesh, which makes the workflow available inside AgInTiFlow runs as a project-aware custom skill.
+
+- Tool URL: <https://flow.lazying.art>
+- AgInTiFlow repo: <https://github.com/lazyingart/AgInTiFlow>
+- Required version: `@lazyingart/agintiflow >= 0.20.191`
+
+The root [`SKILL.md`](SKILL.md) uses Codex-style `name:` frontmatter; AgInTiFlow `0.20.191+` can normalize that into native SkillMesh `id:` and `label:` metadata during import.
 
 From the AgInTiFlow repository:
 

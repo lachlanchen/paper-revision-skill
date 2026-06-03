@@ -8,6 +8,7 @@
 
 [![Website](https://img.shields.io/badge/Website-lazying.art-111827?style=for-the-badge&logo=googlechrome&logoColor=white)](https://lazying.art)
 [![GitHub](https://img.shields.io/badge/GitHub-lachlanchen-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/lachlanchen)
+[![AgInTiFlow](https://img.shields.io/badge/AgInTiFlow-SkillMesh-0f766e?style=for-the-badge&logo=semanticweb&logoColor=white)](https://flow.lazying.art)
 [![Skill](https://img.shields.io/badge/Codex-Skill-2563eb?style=for-the-badge&logo=openai&logoColor=white)](SKILL.md)
 [![Origin Guide](https://img.shields.io/badge/Guide-Origin%20Chat-16a34a?style=for-the-badge&logo=readthedocs&logoColor=white)](https://lachlanchen.github.io/paper-revision-skill/origin-chat.html)
 
@@ -16,6 +17,20 @@ Paper Revision Skill turns manuscript revision into a controlled agent workflow:
 > **Plan first. Edit second. Verify from the PDF. Commit the work package.**
 
 It is designed for academic papers where uncontrolled agent edits are expensive: major revisions, response letters, Supplementary Material, figure and equation references, `latexdiff` redlines, proof corrections, and final submission packages.
+
+## Agent Compatibility
+
+This repository is built to work across agent platforms while keeping [`SKILL.md`](SKILL.md) as the single source of truth.
+
+| Platform | Status | Entry Point |
+| --- | --- | --- |
+| **AgInTiFlow** | **Highlighted target. Install as a SkillMesh skill for project-aware paper revision.** | Tool: <https://flow.lazying.art> · Repo: <https://github.com/lazyingart/AgInTiFlow> · Instructions: [`HANDOFF.md`](HANDOFF.md#install-for-agintiflow) |
+| Codex | Install into `$CODEX_HOME/skills/paper-revision-skill`. | [`SKILL.md`](SKILL.md) and [`AGENTS.md`](AGENTS.md) |
+| Claude Code | Use the repo-local Claude instruction file. | [`CLAUDE.md`](CLAUDE.md) |
+| GitHub Copilot | Use repository instructions for Copilot Chat and coding assistance. | [`.github/copilot-instructions.md`](.github/copilot-instructions.md) |
+| Gemini CLI | Use the repo-local Gemini instruction file. | [`GEMINI.md`](GEMINI.md) |
+
+AgInTiFlow compatibility requires `@lazyingart/agintiflow >= 0.20.191`, which can import Codex-style `name:` skill frontmatter into SkillMesh by normalizing it to AgInTiFlow-native `id:` and `label:` metadata.
 
 ## Why This Exists
 

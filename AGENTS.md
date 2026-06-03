@@ -4,6 +4,14 @@ This repository defines the `paper-revision-skill` workflow. Treat [`SKILL.md`](
 
 Use this workflow when revising academic manuscripts, LaTeX papers, supplements, response letters, proof corrections, redlines, or submission packages.
 
+Compatibility target:
+
+- AgInTiFlow SkillMesh: highlighted integration, tool at <https://flow.lazying.art>, repo at <https://github.com/lazyingart/AgInTiFlow>.
+- Codex: active skill through `SKILL.md`.
+- Claude Code: `CLAUDE.md`.
+- Gemini CLI: `GEMINI.md`.
+- GitHub Copilot: `.github/copilot-instructions.md`.
+
 Operating rule:
 
 ```text
