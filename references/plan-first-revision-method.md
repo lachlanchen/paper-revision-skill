@@ -11,6 +11,7 @@ This reference describes a workflow for using an agent to revise academic papers
 5. Plan markdown template
 6. Working with multiple agents or models
 7. Commit discipline
+8. Skill history snapshots
 
 ## 1. Core Idea
 
@@ -137,3 +138,12 @@ Commit after each completed revision unit:
 - One response-letter location update.
 
 When unrelated worktree changes exist, commit only files related to the current task unless explicitly asked to commit all changes.
+
+## 8. Skill History Snapshots
+
+This repository keeps two snapshots of the skill's development:
+
+- `references/skill-history/original-skill-before-plan-first-chat.md`
+- `references/skill-history/expanded-skill-after-plan-first-chat.md`
+
+The active `SKILL.md` uses the expanded plan-first version. The original snapshot is kept to show the simpler workflow before the explicit plan-markdown method was added.
