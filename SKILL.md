@@ -45,3 +45,4 @@ Read these when needed:
 - `references/plan-first-revision-method.md` for the full planning method.
 - `references/latex-revision-file-map.md` for main, supplement, baseline, latest, and redline file conventions.
 - `references/response-letter-proof-workflow.md` for response-letter and proof-correction patterns.
+- `references/origin-chat-plan-gated-revision.md` for the cleaned origin conversation and teaching guide.
