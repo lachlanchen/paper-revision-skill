@@ -423,27 +423,40 @@
 
     @media print {
       body { background: white; }
-      .langbar, .nav, .hero-actions { display: none; }
+      .site-header, .langbar, .nav, .hero-actions { display: none; }
       section, .hero { box-shadow: none; break-inside: avoid; }
       .bubble { box-shadow: none; }
     }
   </style>
+  <link rel="stylesheet" href="site.css">
+  <script defer src="site.js"></script>
 </head>
 <body>
   <main class="page">
-    <nav class="langbar" aria-label="Translations">
-      <a class="active" href="origin-chat.html">English</a>
-      <a href="i18n/origin-chat.ar.html">العربية</a>
-      <a href="i18n/origin-chat.es.html">Español</a>
-      <a href="i18n/origin-chat.fr.html">Français</a>
-      <a href="i18n/origin-chat.ja.html">日本語</a>
-      <a href="i18n/origin-chat.ko.html">한국어</a>
-      <a href="i18n/origin-chat.vi.html">Tiếng Việt</a>
-      <a href="i18n/origin-chat.zh-Hans.html">中文 (简体)</a>
-      <a href="i18n/origin-chat.zh-Hant.html">中文（繁體）</a>
-      <a href="i18n/origin-chat.de.html">Deutsch</a>
-      <a href="i18n/origin-chat.ru.html">Русский</a>
-    </nav>
+    <header class="site-header" aria-label="Site navigation">
+      <a class="site-brand" href="index.html">Paper Revision Skill</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="origin-chat.html">Guide</a>
+        <a href="origin-chat-downloaded-package.html">Standalone</a>
+        <a href="https://github.com/lachlanchen/paper-revision-skill">GitHub</a>
+      </nav>
+      <div class="language-menu">
+        <label class="sr-only" for="language-select">Choose language</label>
+        <select id="language-select" data-language-select aria-label="Choose language">
+<option value="origin-chat.html" selected>English</option>
+<option value="i18n/origin-chat.ar.html">العربية</option>
+<option value="i18n/origin-chat.es.html">Español</option>
+<option value="i18n/origin-chat.fr.html">Français</option>
+<option value="i18n/origin-chat.ja.html">日本語</option>
+<option value="i18n/origin-chat.ko.html">한국어</option>
+<option value="i18n/origin-chat.vi.html">Tiếng Việt</option>
+<option value="i18n/origin-chat.zh-Hans.html">中文 (简体)</option>
+<option value="i18n/origin-chat.zh-Hant.html">中文（繁體）</option>
+<option value="i18n/origin-chat.de.html">Deutsch</option>
+<option value="i18n/origin-chat.ru.html">Русский</option>
+        </select>
+      </div>
+    </header>
     <header class="hero">
       <span class="eyebrow">Origin chat · Agent skill · Revision engineering</span>
       <h1>Plan-Gated Paper Revision Skill</h1>

@@ -3,37 +3,95 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="refresh" content="0; url=origin-chat.html">
-  <title>Paper Revision Skill Guide</title>
+  <title>Paper Revision Skill</title>
+  <meta name="description" content="Plan-gated manuscript revision workflow for LaTeX papers, response letters, redlines, and proof corrections.">
+  <link rel="stylesheet" href="site.css">
+  <script defer src="site.js"></script>
   <style>
+    :root { --bg: #f6f8fb; --ink: #182033; --muted: #64748b; --line: #e5e9f2; }
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       min-height: 100vh;
-      display: grid;
-      place-items: center;
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f6f8fb;
-      color: #182033;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% -5%, rgba(127, 184, 255, .35), transparent 30rem),
+        radial-gradient(circle at 95% 0%, rgba(114, 211, 141, .28), transparent 28rem),
+        linear-gradient(180deg, #fdfefe 0%, var(--bg) 50%, #eef3fb 100%);
+      line-height: 1.6;
     }
-    main {
-      width: min(680px, calc(100vw - 40px));
-      padding: 32px;
-      border: 1px solid #e5e9f2;
-      border-radius: 14px;
-      background: #fff;
-      box-shadow: 0 18px 50px rgba(24, 32, 51, 0.08);
+    a { color: #246bca; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1080px; margin: 0 auto; padding: 28px 22px 70px; }
+    .hero {
+      border: 1px solid rgba(229,233,242,.95);
+      border-radius: 34px;
+      background: rgba(255,255,255,.88);
+      box-shadow: 0 18px 60px rgba(25,33,58,.10);
+      padding: clamp(34px, 6vw, 64px);
     }
-    a {
-      color: #246bca;
-      font-weight: 700;
-    }
+    .eyebrow { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: #eee7ff; color: #7352c7; font-size: 13px; font-weight: 850; letter-spacing: .08em; text-transform: uppercase; }
+    h1 { margin: 22px 0 14px; max-width: 780px; font-size: clamp(42px, 7vw, 82px); line-height: .96; letter-spacing: -.06em; }
+    .lead { max-width: 760px; color: var(--muted); font-size: 20px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 999px; background: white; color: var(--ink); padding: 12px 16px; font-weight: 850; box-shadow: 0 8px 24px rgba(25,33,58,.06); }
+    .btn.primary { background: #1e293b; color: white; border-color: #1e293b; }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Paper Revision Skill Guide</h1>
-    <p>Redirecting to the visual origin chat guide.</p>
-    <p><a href="origin-chat.html">Open origin-chat.html</a></p>
+  <main class="page">
+    <header class="site-header" aria-label="Site navigation">
+      <a class="site-brand" href="index.html">Paper Revision Skill</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="origin-chat.html">Guide</a>
+        <a href="origin-chat-downloaded-package.html">Standalone</a>
+        <a href="https://github.com/lachlanchen/paper-revision-skill">GitHub</a>
+      </nav>
+      <div class="language-menu">
+        <label class="sr-only" for="language-select">Choose language</label>
+        <select id="language-select" data-language-select aria-label="Choose language">
+<option value="origin-chat.html" selected>English</option>
+<option value="i18n/origin-chat.ar.html">العربية</option>
+<option value="i18n/origin-chat.es.html">Español</option>
+<option value="i18n/origin-chat.fr.html">Français</option>
+<option value="i18n/origin-chat.ja.html">日本語</option>
+<option value="i18n/origin-chat.ko.html">한국어</option>
+<option value="i18n/origin-chat.vi.html">Tiếng Việt</option>
+<option value="i18n/origin-chat.zh-Hans.html">中文 (简体)</option>
+<option value="i18n/origin-chat.zh-Hant.html">中文（繁體）</option>
+<option value="i18n/origin-chat.de.html">Deutsch</option>
+<option value="i18n/origin-chat.ru.html">Русский</option>
+        </select>
+      </div>
+    </header>
+    <section class="hero">
+      <span class="eyebrow">Agent skill · LaTeX revision · Redlines</span>
+      <h1>Controlled paper revision for AI agents.</h1>
+      <p class="lead">Paper Revision Skill turns reviewer comments, response letters, redlines, proof corrections, and final submission work into a plan-first workflow.</p>
+      <div class="actions">
+        <a class="btn primary" href="origin-chat.html">Open the full guide</a>
+        <a class="btn" href="i18n/origin-chat.zh-Hans.html">中文简介</a>
+        <a class="btn" href="https://github.com/lachlanchen/paper-revision-skill">GitHub repository</a>
+      </div>
+    </section>
+    <section class="landing-grid" aria-label="Website sections">
+      <article class="landing-card">
+        <h2>Full Guide</h2>
+        <p>The visual origin chat and complete workflow explanation.</p>
+        <a href="origin-chat.html">Read guide</a>
+      </article>
+      <article class="landing-card">
+        <h2>Translations</h2>
+        <p>Short multilingual entry pages with the same language selector.</p>
+        <a href="i18n/origin-chat.zh-Hans.html">Open translations</a>
+      </article>
+      <article class="landing-card">
+        <h2>Install</h2>
+        <p>Use the repository skill files, templates, prompts, and handoff note.</p>
+        <a href="https://github.com/lachlanchen/paper-revision-skill#readme">View README</a>
+      </article>
+    </section>
   </main>
 </body>
 </html>
