@@ -71,7 +71,7 @@ Reviewer comment or proof query
 Use the active skill:
 
 ```text
-Use $latex-paper-revision to revise this paper.
+Use $paper-revision-skill to revise this paper.
 First create a plan in references/.
 Do not edit outside the plan.
 Build the manuscript and redline after execution.

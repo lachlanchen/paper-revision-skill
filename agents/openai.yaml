@@ -1,4 +1,4 @@
 interface:
-  display_name: "LaTeX Paper Revision"
+  display_name: "Paper Revision Skill"
   short_description: "Plan-first manuscript revision workflow"
-  default_prompt: "Use $latex-paper-revision to revise a LaTeX paper, response letter, proof correction note, or redlined manuscript package."
+  default_prompt: "Use $paper-revision-skill to revise a LaTeX paper, response letter, proof correction note, or redlined manuscript package."
