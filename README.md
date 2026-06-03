@@ -162,6 +162,7 @@ REDLINED_SM=redlined_minor_sm.tex \
 Open the HTML guide locally or through GitHub Pages:
 
 - [Live guide on GitHub Pages](https://lachlanchen.github.io/paper-revision-skill/origin-chat.html)
+- [Website language pages](https://lachlanchen.github.io/paper-revision-skill/i18n/origin-chat.zh-Hans.html)
 - [`docs/origin-chat.html`](docs/origin-chat.html)
 - [`references/origin-chat-plan-gated-revision.md`](references/origin-chat-plan-gated-revision.md)
 

@@ -52,6 +52,34 @@
       padding: 28px 22px 70px;
     }
 
+    .langbar {
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+    }
+    .langbar a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 10px;
+      border: 1px solid rgba(229,233,242,.95);
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 8px 22px rgba(25,33,58,.05);
+      color: #334155;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .langbar a:hover,
+    .langbar a.active {
+      background: #1e293b;
+      color: #fff;
+      border-color: #1e293b;
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
@@ -395,7 +423,7 @@
 
     @media print {
       body { background: white; }
-      .nav, .hero-actions { display: none; }
+      .langbar, .nav, .hero-actions { display: none; }
       section, .hero { box-shadow: none; break-inside: avoid; }
       .bubble { box-shadow: none; }
     }
@@ -403,6 +431,19 @@
 </head>
 <body>
   <main class="page">
+    <nav class="langbar" aria-label="Translations">
+      <a class="active" href="origin-chat.html">English</a>
+      <a href="i18n/origin-chat.ar.html">العربية</a>
+      <a href="i18n/origin-chat.es.html">Español</a>
+      <a href="i18n/origin-chat.fr.html">Français</a>
+      <a href="i18n/origin-chat.ja.html">日本語</a>
+      <a href="i18n/origin-chat.ko.html">한국어</a>
+      <a href="i18n/origin-chat.vi.html">Tiếng Việt</a>
+      <a href="i18n/origin-chat.zh-Hans.html">中文 (简体)</a>
+      <a href="i18n/origin-chat.zh-Hant.html">中文（繁體）</a>
+      <a href="i18n/origin-chat.de.html">Deutsch</a>
+      <a href="i18n/origin-chat.ru.html">Русский</a>
+    </nav>
     <header class="hero">
       <span class="eyebrow">Origin chat · Agent skill · Revision engineering</span>
       <h1>Plan-Gated Paper Revision Skill</h1>
