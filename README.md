@@ -101,6 +101,10 @@ paper-project/
 | --- | --- |
 | [`SKILL.md`](SKILL.md) | Active Codex skill instructions |
 | [`HANDOFF.md`](HANDOFF.md) | Short install and handoff note for collaborators |
+| [`AGENTS.md`](AGENTS.md) | Agent-neutral repository instructions that point back to `SKILL.md` |
+| [`CLAUDE.md`](CLAUDE.md) | Claude Code handoff instructions |
+| [`GEMINI.md`](GEMINI.md) | Gemini CLI-style handoff instructions |
+| [`.github/copilot-instructions.md`](.github/copilot-instructions.md) | GitHub Copilot repository instructions |
 | [`i18n/SKILL.zh-Hans.md`](i18n/SKILL.zh-Hans.md) | Simplified Chinese version of the skill guide |
 | [`references/plan-first-revision-method.md`](references/plan-first-revision-method.md) | Full method for plan-gated revision |
 | [`references/latex-revision-file-map.md`](references/latex-revision-file-map.md) | File conventions for latest, original, and redlined versions |

@@ -1,6 +1,6 @@
 # Handoff: Install Paper Revision Skill
 
-This note is for collaborators who want to install and use `paper-revision-skill` with Codex.
+This note is for collaborators who want to install and use `paper-revision-skill` with Codex, AgInTiFlow, Claude, Gemini, Copilot, or another agent tool.
 
 ## What This Skill Does
 
@@ -54,6 +54,58 @@ Save the plan under references/.
 
 The expected behavior is that Codex reads the skill, creates a bounded Markdown plan first, and does not immediately rewrite the manuscript.
 
+## Install For AgInTiFlow
+
+AgInTiFlow supports this skill through SkillMesh. The root [`SKILL.md`](SKILL.md) uses Codex-style `name:` frontmatter; current AgInTiFlow can normalize that into native SkillMesh `id:` and `label:` metadata during import.
+
+From the AgInTiFlow repository:
+
+```bash
+cd /home/lachlan/ProjectsLFS/Agent/AgInTiFlow
+node --input-type=module - <<'NODE'
+import fs from "node:fs/promises";
+import {
+  buildSkillPackFromMarkdown,
+  enableSkillMeshSkill,
+  installSkillPack,
+} from "./src/skillmesh.js";
+
+const content = await fs.readFile("/home/lachlan/ProjectsLFS/paper-revision-skill/SKILL.md", "utf8");
+const pack = await buildSkillPackFromMarkdown(content, { valueScore: 95 });
+await installSkillPack(pack, { enabled: true });
+await enableSkillMeshSkill("paper-revision-skill", true);
+console.log(JSON.stringify({ ok: true, installedSkills: pack.skills.map((skill) => skill.id), packHash: pack.packHash }, null, 2));
+NODE
+```
+
+Quick AgInTiFlow selection test:
+
+```bash
+cd /home/lachlan/ProjectsLFS/Agent/AgInTiFlow
+node --input-type=module - <<'NODE'
+import { selectSkillsForGoal } from "./src/skill-library.js";
+const selected = selectSkillsForGoal(
+  "Use the paper revision workflow to answer reviewer comments before editing LaTeX.",
+  { limit: 8, includeBody: false }
+);
+console.log(selected.map((skill) => `${skill.id}:${skill.source}`).join("\n"));
+if (!selected.some((skill) => skill.id === "paper-revision-skill")) {
+  throw new Error("paper-revision-skill was not selected");
+}
+NODE
+```
+
+## Other Agent Tools
+
+This repository includes lightweight adapter files that all point back to [`SKILL.md`](SKILL.md):
+
+- [`AGENTS.md`](AGENTS.md) for Codex-style repository instructions.
+- [`CLAUDE.md`](CLAUDE.md) for Claude Code.
+- [`GEMINI.md`](GEMINI.md) for Gemini CLI-style workflows.
+- [`.github/copilot-instructions.md`](.github/copilot-instructions.md) for GitHub Copilot repository instructions.
+
+These files should not fork the workflow. Keep [`SKILL.md`](SKILL.md) as the source of truth.
+
 ## Update An Existing Install
 
 Pull the newest repository version:
@@ -70,9 +122,9 @@ CODEX_HOME="${CODEX_HOME:-$HOME/.codex}"
 rsync -a --delete --exclude '.git' --exclude '.DS_Store' ./ "$CODEX_HOME/skills/paper-revision-skill/"
 ```
 
-## For Non-Codex Users
+## For Manual Use
 
-If you are not using Codex, treat this repository as a workflow manual:
+If you are not using an agent with skill support, treat this repository as a workflow manual:
 
 - Read [`SKILL.md`](SKILL.md) for the operating rules.
 - Use [`templates/revision_plan.md`](templates/revision_plan.md) before each major edit.
