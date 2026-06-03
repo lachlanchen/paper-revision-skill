@@ -1,0 +1,4 @@
+interface:
+  display_name: "LaTeX Paper Revision"
+  short_description: "Plan-first manuscript revision workflow"
+  default_prompt: "Use $latex-paper-revision to revise a LaTeX paper, response letter, proof correction note, or redlined manuscript package."
