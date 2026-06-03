@@ -1,25 +1,449 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Paper Revision Skill — 한국어</title>
+  <meta name="description" content="Full multilingual entry page for the Plan-Gated Paper Revision Skill guide." />
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --paper: #ffffff;
+      --ink: #182033;
+      --muted: #687187;
+      --line: #e5e9f2;
+      --blue: #dcecff;
+      --blue-edge: #7fb8ff;
+      --blue-strong: #246bca;
+      --green: #dff7e6;
+      --green-edge: #72d38d;
+      --green-strong: #1f8a45;
+      --purple: #eee7ff;
+      --purple-strong: #7352c7;
+      --amber: #fff3d6;
+      --amber-strong: #ae7100;
+      --red: #ffe3df;
+      --red-strong: #b34435;
+      --shadow: 0 18px 60px rgba(25, 33, 58, .10);
+      --radius: 22px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% -5%, rgba(127, 184, 255, .35), transparent 30rem),
+        radial-gradient(circle at 95% 0%, rgba(114, 211, 141, .28), transparent 28rem),
+        linear-gradient(180deg, #fdfefe 0%, var(--bg) 35%, #eef3fb 100%);
+      line-height: 1.58;
+    }
+
+    a { color: var(--blue-strong); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 22px 70px;
+    }
+
+    .langbar {
+      margin: 0 0 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      align-items: center;
+    }
+    .langbar a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 6px 10px;
+      border: 1px solid rgba(229,233,242,.95);
+      border-radius: 999px;
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 8px 22px rgba(25,33,58,.05);
+      color: #334155;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .langbar a:hover,
+    .langbar a.active {
+      background: #1e293b;
+      color: #fff;
+      border-color: #1e293b;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(229, 233, 242, .9);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, .82);
+      box-shadow: var(--shadow);
+      padding: 56px 54px;
+      backdrop-filter: blur(12px);
+    }
+    .hero:before {
+      content: "";
+      position: absolute;
+      inset: auto -130px -170px auto;
+      width: 420px;
+      height: 420px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(114,211,141,.35), rgba(127,184,255,.22) 45%, transparent 70%);
+      pointer-events: none;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--purple-strong);
+      background: var(--purple);
+      border: 1px solid rgba(115,82,199,.16);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-weight: 750;
+    }
+    h1 {
+      margin: 22px 0 14px;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: .98;
+      letter-spacing: -0.06em;
+      max-width: 870px;
+    }
+    .subtitle {
+      max-width: 770px;
+      color: var(--muted);
+      font-size: 20px;
+      margin: 0;
+    }
+    .hero-actions {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-weight: 740;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      box-shadow: 0 8px 24px rgba(25,33,58,.06);
+    }
+    .btn.primary {
+      background: #1e293b;
+      color: white;
+      border-color: #1e293b;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      margin: 22px 0;
+      border: 1px solid rgba(229,233,242,.92);
+      border-radius: 999px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 12px 32px rgba(25,33,58,.06);
+      backdrop-filter: blur(12px);
+      padding: 8px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+    }
+    .nav a {
+      white-space: nowrap;
+      color: #334155;
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-weight: 650;
+      font-size: 14px;
+    }
+    .nav a:hover {
+      background: #f1f5f9;
+      text-decoration: none;
+    }
+
+    section {
+      margin-top: 30px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(229,233,242,.95);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 50px rgba(25,33,58,.07);
+      padding: 34px;
+    }
+    section.flat { box-shadow: none; }
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(26px, 3.5vw, 42px);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+    h3 {
+      margin: 28px 0 12px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+    .lead { color: var(--muted); font-size: 18px; max-width: 860px; }
+    .small { color: var(--muted); font-size: 14px; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      background: linear-gradient(180deg, #ffffff, #fbfcff);
+      min-height: 150px;
+    }
+    .card .num {
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      color: white;
+      background: #1e293b;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .card h3 { margin: 0 0 6px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .diagram {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: #fbfdff;
+      padding: 16px;
+      margin-top: 20px;
+    }
+    svg text { font-family: var(--sans); }
+
+    .chat-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .msg-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 12px;
+      max-width: 100%;
+    }
+    .msg-row.right { justify-content: flex-end; }
+    .avatar {
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 850;
+      box-shadow: 0 10px 26px rgba(25,33,58,.12);
+    }
+    .avatar.blue { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+    .avatar.green { background: linear-gradient(135deg, #28c76f, #188a4a); }
+    .bubble {
+      max-width: 760px;
+      border-radius: 22px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 25px rgba(25,33,58,.06);
+      position: relative;
+    }
+    .bubble.blue {
+      background: var(--blue);
+      border-color: rgba(127,184,255,.55);
+    }
+    .bubble.green {
+      background: var(--green);
+      border-color: rgba(114,211,141,.58);
+    }
+    .bubble .name {
+      font-size: 13px;
+      font-weight: 820;
+      margin-bottom: 6px;
+      opacity: .82;
+    }
+    .bubble p { margin: 0 0 9px; }
+    .bubble p:last-child { margin-bottom: 0; }
+    .bubble ul { margin: 8px 0 0 20px; padding: 0; }
+    .bubble code, .inline-code {
+      font-family: var(--mono);
+      font-size: .94em;
+      background: rgba(255,255,255,.62);
+      border: 1px solid rgba(0,0,0,.05);
+      border-radius: 7px;
+      padding: 1px 5px;
+    }
+    .aside-note {
+      margin: 12px auto;
+      max-width: 760px;
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      color: #475569;
+      border-radius: 18px;
+      padding: 13px 16px;
+      font-size: 15px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+    .callout {
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      padding: 18px;
+      background: #fbfdff;
+    }
+    .callout h3 { margin-top: 0; }
+    .callout.warning { background: var(--amber); border-color: rgba(174,113,0,.18); }
+    .callout.success { background: var(--green); border-color: rgba(31,138,69,.18); }
+    .callout.danger { background: var(--red); border-color: rgba(179,68,53,.18); }
+    .callout.purple { background: var(--purple); border-color: rgba(115,82,199,.18); }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: white;
+      margin-top: 18px;
+    }
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+    th {
+      background: #f8fafc;
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: #475569;
+    }
+    tr:last-child td { border-bottom: none; }
+    td:first-child { font-weight: 720; }
+
+    pre {
+      margin: 16px 0 0;
+      padding: 18px;
+      border-radius: 18px;
+      background: #0f172a;
+      color: #e2e8f0;
+      overflow-x: auto;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.55;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .bars { display: grid; gap: 13px; margin-top: 18px; }
+    .bar-line { display: grid; grid-template-columns: 150px 1fr 50px; gap: 12px; align-items: center; }
+    .bar-label { color: #334155; font-weight: 700; }
+    .bar-track { height: 14px; border-radius: 999px; background: #edf2f7; overflow: hidden; border: 1px solid #e2e8f0; }
+    .bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #60a5fa, #22c55e); }
+    .bar-value { text-align: right; color: var(--muted); font-family: var(--mono); font-size: 13px; }
+
+    .timeline { margin-top: 22px; position: relative; }
+    .timeline:before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: #dbe3ef;
+    }
+    .tl-item {
+      position: relative;
+      padding-left: 52px;
+      margin: 18px 0;
+    }
+    .tl-dot {
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #1e293b;
+      color: white;
+      font-weight: 850;
+      box-shadow: 0 8px 22px rgba(25,33,58,.14);
+    }
+    .tl-item h3 { margin: 0 0 4px; }
+    .tl-item p { margin: 0; color: var(--muted); }
+
+    .footer {
+      margin: 28px 0 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 880px) {
+      .hero { padding: 38px 26px; }
+      .cards, .two-col { grid-template-columns: 1fr; }
+      section { padding: 24px; }
+      .bubble { max-width: calc(100vw - 110px); }
+      .bar-line { grid-template-columns: 1fr; gap: 6px; }
+      .bar-value { text-align: left; }
+    }
+
+    @media print {
+      body { background: white; }
+      .site-header, .langbar, .nav, .hero-actions { display: none; }
+      section, .hero { box-shadow: none; break-inside: avoid; }
+      .bubble { box-shadow: none; }
+    }
+  </style>
   <link rel="stylesheet" href="../site.css">
   <link rel="stylesheet" href="style.css">
   <script defer src="../site.js"></script>
 </head>
 <body>
   <main class="page">
-<header class="site-header" aria-label="Site navigation">
-  <a class="site-brand" href="../index.html">Paper Revision Skill</a>
-  <nav class="site-nav" aria-label="Primary navigation">
-    <a href="../origin-chat.html">Full Guide</a>
-    <a href="../origin-chat-downloaded-package.html">Standalone</a>
-    <a href="https://github.com/lachlanchen/paper-revision-skill">GitHub</a>
-  </nav>
-  <div class="language-menu">
-    <label class="sr-only" for="language-select">Choose language</label>
-    <select id="language-select" data-language-select aria-label="Choose language">
+    <header class="site-header" aria-label="Site navigation">
+      <a class="site-brand" href="../index.html">Paper Revision Skill</a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="../origin-chat.html">Full Guide</a>
+        <a href="../origin-chat-downloaded-package.html">Standalone</a>
+        <a href="https://github.com/lachlanchen/paper-revision-skill">GitHub</a>
+      </nav>
+      <div class="language-menu">
+        <label class="sr-only" for="language-select">Choose language</label>
+        <select id="language-select" data-language-select aria-label="Choose language">
 <option value="../origin-chat.html">English</option>
 <option value="origin-chat.ar.html">العربية</option>
 <option value="origin-chat.es.html">Español</option>
@@ -31,23 +455,483 @@
 <option value="origin-chat.zh-Hant.html">中文（繁體）</option>
 <option value="origin-chat.de.html">Deutsch</option>
 <option value="origin-chat.ru.html">Русский</option>
-    </select>
-  </div>
-</header>
-    <section class="hero">
-      <p class="eyebrow">계획 기반 논문 수정</p>
-      <h1>Paper Revision Skill</h1>
-      <p class="lead">먼저 계획하고, 그다음 편집합니다. PDF에서 확인하고 작업 단위를 git에 기록합니다.</p>
-      <p>이 페이지는 시각적 안내서의 방법을 요약합니다. 전체 안내서는 현재 영어로 제공됩니다.</p>
-      <p>
-        <a class="btn primary" href="../origin-chat.html">Open full visual guide</a>
-        <a class="btn" href="https://github.com/lachlanchen/paper-revision-skill#readme">GitHub README</a>
-      </p>
+        </select>
+      </div>
+    </header>
+    <header class="hero">
+      <span class="eyebrow">기원 대화 · Agent skill · 논문 수정 엔지니어링</span>
+      <h1>계획 게이트형 Paper Revision Skill</h1>
+      <p class="subtitle">AI 기반 논문 수정을 통제 가능하고 추적 가능하게 만드는 방법을 설명하는 정리된 origin chat입니다.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#chat">대화 읽기</a>
+        <a class="btn" href="#workflow">워크플로 보기</a>
+        <a class="btn" href="#github">GitHub에서 사용</a>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="Table of contents">
+      <a href="#idea">핵심 아이디어</a>
+      <a href="#chat">기원 대화</a>
+      <a href="#workflow">워크플로</a>
+      <a href="#roles">에이전트</a>
+      <a href="#tables">표</a>
+      <a href="#prompt">Prompt</a>
+      <a href="#github">GitHub</a>
+    </nav>
+
+    <section class="flat" aria-label="Translation note"><p class="lead">아래는 전체 웹사이트 본문입니다. 자세한 설명, 도표, 대화 본문은 GitHub README 및 skill 파일과의 일관성을 위해 영어로 유지됩니다.</p></section>
+
+    <section id="idea">
+      <h2>The idea in one sentence</h2>
+      <p class="lead"><strong>Do not let an AI agent think, edit, verify, and explain all at once.</strong> First force the reasoning into a Markdown plan, then let the editing agent execute only that approved plan.</p>
+      <div class="cards">
+        <article class="card">
+          <div class="num">1</div>
+          <h3>Think first</h3>
+          <p>Use a reasoning model to diagnose the reviewer concern and write a plan.</p>
+        </article>
+        <article class="card">
+          <div class="num">2</div>
+          <h3>Gate edits</h3>
+          <p>No plan, no manuscript changes. The plan is the edit boundary.</p>
+        </article>
+        <article class="card">
+          <div class="num">3</div>
+          <h3>Verify truth</h3>
+          <p>Compile, inspect the PDF, then update the response letter with verified locations.</p>
+        </article>
+        <article class="card">
+          <div class="num">4</div>
+          <h3>Commit history</h3>
+          <p>Each accepted work package becomes a clean Git step that can be reviewed or rolled back.</p>
+        </article>
+      </div>
+
+      <div class="diagram" aria-label="Plan gated workflow diagram">
+        <svg width="1040" height="260" viewBox="0 0 1040 260" role="img" aria-label="Reviewer comment goes to strategist, plan, human approval, executor, build, auditor, response letter and git.">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L8,3 z" fill="#718096" />
+            </marker>
+            <marker id="arrow-loop" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="-90" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L8,3 z" fill="#718096" />
+            </marker>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#19213a" flood-opacity="0.12"/>
+            </filter>
+          </defs>
+          <a href="https://lazying.art" target="_blank" rel="noopener" aria-label="LazyingArt">
+            <image href="../assets/lazyingart-logo.png" x="18" y="12" width="190" height="56" preserveAspectRatio="xMinYMid meet" />
+          </a>
+          <rect x="18" y="88" width="120" height="76" rx="18" fill="#fff3d6" stroke="#f3d084" filter="url(#softShadow)" />
+          <text x="78" y="118" text-anchor="middle" font-size="14" font-weight="800" fill="#7a5200">Reviewer</text>
+          <text x="78" y="140" text-anchor="middle" font-size="12" fill="#7a5200">comment</text>
+
+          <path d="M142 126 C168 126 174 126 198 126" stroke="#718096" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+          <rect x="202" y="70" width="142" height="112" rx="20" fill="#eee7ff" stroke="#c7b8ff" filter="url(#softShadow)" />
+          <text x="273" y="108" text-anchor="middle" font-size="14" font-weight="800" fill="#5d3eb2">Strategist</text>
+          <text x="273" y="132" text-anchor="middle" font-size="12" fill="#5d3eb2">diagnose + plan</text>
+          <text x="273" y="154" text-anchor="middle" font-size="12" fill="#5d3eb2">not edit</text>
+
+          <path d="M348 126 C374 126 380 126 404 126" stroke="#718096" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+          <rect x="408" y="78" width="132" height="96" rx="20" fill="#dff7e6" stroke="#72d38d" filter="url(#softShadow)" />
+          <text x="474" y="112" text-anchor="middle" font-size="14" font-weight="800" fill="#1f8a45">Plan file</text>
+          <text x="474" y="136" text-anchor="middle" font-size="12" fill="#1f8a45">references/*.md</text>
+
+          <path d="M544 126 C570 126 576 126 600 126" stroke="#718096" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+          <rect x="604" y="78" width="132" height="96" rx="20" fill="#ffffff" stroke="#cbd5e1" filter="url(#softShadow)" />
+          <text x="670" y="112" text-anchor="middle" font-size="14" font-weight="800" fill="#334155">Human gate</text>
+          <text x="670" y="136" text-anchor="middle" font-size="12" fill="#64748b">approve or split</text>
+
+          <path d="M740 126 C766 126 772 126 796 126" stroke="#718096" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+          <rect x="800" y="70" width="142" height="112" rx="20" fill="#dcecff" stroke="#7fb8ff" filter="url(#softShadow)" />
+          <text x="871" y="108" text-anchor="middle" font-size="14" font-weight="800" fill="#246bca">Executor</text>
+          <text x="871" y="132" text-anchor="middle" font-size="12" fill="#246bca">edit + build</text>
+          <text x="871" y="154" text-anchor="middle" font-size="12" fill="#246bca">only in scope</text>
+
+          <path d="M872 186 C872 222 196 222 196 186" stroke="#718096" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#arrow-loop)"/>
+          <text x="531" y="242" text-anchor="middle" font-size="13" fill="#64748b">If the task is too broad: split it into a smaller plan, then loop again.</text>
+
+          <rect x="466" y="12" width="160" height="42" rx="16" fill="#0f172a" opacity=".96"/>
+          <text x="546" y="38" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">No plan → no edit</text>
+        </svg>
+      </div>
     </section>
+
+    <section id="chat">
+      <h2>Cleaned origin chat</h2>
+      <p class="lead">This is a readable, translated, and lightly elaborated version of the original chat between <strong>Chen Miao</strong> and <strong>Feifei Robbie</strong>. Unrelated historical banter was removed. The funny analogy was kept because it captures the architecture: strategist, executor, and human commander.</p>
+
+      <div class="chat-wrap">
+        <div class="msg-row right">
+          <div class="bubble green">
+            <div class="name">Chen Miao</div>
+            <p>I used to have a workflow for revising papers with AI. The key is to keep the process linear, otherwise the whole revision becomes messy.</p>
+            <p>First, keep the submitted version as <code>original_main.tex</code>. The working file is still called <code>main.tex</code>. Then let the agent generate <code>redlined_main.tex</code>. Even if the redline is not submitted, it is extremely useful for checking what changed.</p>
+          </div>
+          <div class="avatar green">C</div>
+        </div>
+
+        <div class="msg-row">
+          <div class="avatar blue">R</div>
+          <div class="bubble blue">
+            <div class="name">Feifei Robbie</div>
+            <p>So the baseline is frozen, the current manuscript keeps the same filename, and the redline is generated automatically?</p>
+          </div>
+        </div>
+
+        <div class="msg-row right">
+          <div class="bubble green">
+            <div class="name">Chen Miao</div>
+            <p>Exactly. Then ask AI to draft the response letter first. Go reviewer comment by reviewer comment. First understand the response logic, then ask AI to make a manuscript revision plan, save it as Markdown, check it, and only then execute it.</p>
+            <p>Loop through all comments this way. Also write a build script that automatically compiles the latest manuscript, latest response letter, and redline version.</p>
+          </div>
+          <div class="avatar green">C</div>
+        </div>
+
+        <div class="aside-note"><strong>Design note:</strong> the response letter is not an afterthought. It is the logical map of the revision. If the response cannot be defended, the manuscript edit is probably not ready.</div>
+
+        <div class="msg-row right">
+          <div class="bubble green">
+            <div class="name">Chen Miao</div>
+            <p>Before every meaningful edit, create a Markdown plan. Put it under <code>references/</code>. Later, when you wonder why something was changed, the reason is there. The agent can also read those files and understand the history.</p>
+            <p>Without a plan, you only have the result, not the thinking process.</p>
+          </div>
+          <div class="avatar green">C</div>
+        </div>
+
+        <div class="msg-row">
+          <div class="avatar blue">R</div>
+          <div class="bubble blue">
+            <div class="name">Feifei Robbie</div>
+            <p>Do you mean one Markdown file per reviewer issue, or one file that keeps appending the whole process?</p>
+          </div>
+        </div>
+
+        <div class="msg-row right">
+          <div class="bubble green">
+            <div class="name">Chen Miao</div>
+            <p>Usually many files. Each file corresponds to the current revision package. For example: <code>reviewer1_comment1_revision1.md</code>, <code>figure4_caption_shorten_plan.md</code>, or <code>main_text_shorten_plan.md</code>.</p>
+            <p>The size is dynamic. A plan can cover one small paragraph, one figure caption, one reviewer comment, or a global shortening pass. But plan and execution should correspond one-to-one.</p>
+          </div>
+          <div class="avatar green">C</div>
+        </div>
+
+        <div class="msg-row">
+          <div class="avatar blue">R</div>
+          <div class="bubble blue">
+            <div class="name">Feifei Robbie</div>
+            <p>So the “round” you mean is not every tiny Codex message. It is the moment when we actually let Codex execute a work package?</p>
+          </div>
+        </div>
+
+        <div class="msg-row right">
+          <div class="bubble green">
+            <div class="name">Chen Miao</div>
+            <p>Yes. It is the exact package you hand to Codex and say: apply this.</p>
+            <p>If the plan feels easy for the agent, let it execute. If it looks too difficult, split the plan into smaller plans. You can often tell from the plan quality whether the agent is struggling.</p>
+          </div>
+          <div class="avatar green">C</div>
+        </div>
+
+        <div class="aside-note"><strong>Practical rule:</strong> if the plan sounds vague, the edit will probably become vague. Split before execution, not after the manuscript is damaged.</div>
+
+        <div class="msg-row">
+          <div class="avatar blue">R</div>
+          <div class="bubble blue">
+            <div class="name">Feifei Robbie</div>
+            <p>Does the plan come from you, from ChatGPT, or from Codex itself?</p>
+          </div>
+        </div>
+
+        <div class="msg-row right">
+          <div class="bubble green">
+            <div class="name">Chen Miao</div>
+            <p>Any of them can produce it, but the final plan must be something I approve. Codex is good at editing files, fixing LaTeX, and compiling. But it is weaker at deciding why and how to revise the science and wording.</p>
+            <p>So I often ask ChatGPT for the revision strategy, save that as Markdown, and then let Codex apply it.</p>
+            <p><strong>Knowledge: ChatGPT. Technical execution: Codex.</strong></p>
+          </div>
+          <div class="avatar green">C</div>
+        </div>
+
+        <div class="msg-row">
+          <div class="avatar blue">R</div>
+          <div class="bubble blue">
+            <div class="name">Feifei Robbie</div>
+            <p>What if the plan is executed but the result is not ideal and needs small tuning? Do you create a new Markdown file for every tiny adjustment?</p>
+          </div>
+        </div>
+
+        <div class="msg-row right">
+          <div class="bubble green">
+            <div class="name">Chen Miao</div>
+            <p>Not necessary. The important thing is not to record every tiny chat message. The important thing is that the final executed plan is a good plan.</p>
+            <p>If the plan is not good, revise it, overwrite it, or ask another model to improve it. But the agent should be constrained by the final plan. The core is controlling the edit scope.</p>
+          </div>
+          <div class="avatar green">C</div>
+        </div>
+
+        <div class="msg-row right">
+          <div class="bubble green">
+            <div class="name">Chen Miao</div>
+            <p>I discovered that when the agent is not strong at a task, it starts to edit randomly. The more it edits, the more chaotic it becomes. But once I use a plan before editing, the process becomes controllable.</p>
+            <p>It reduces the burden. The agent does not need to think about what to change and how to edit the files at the same time.</p>
+          </div>
+          <div class="avatar green">C</div>
+        </div>
+
+        <div class="msg-row">
+          <div class="avatar blue">R</div>
+          <div class="bubble blue">
+            <div class="name">Feifei Robbie</div>
+            <p>So you are like Zhuge Liang setting up the strategy, and Codex is Zhao Yun going to the battlefield?</p>
+          </div>
+        </div>
+
+        <div class="msg-row right">
+          <div class="bubble green">
+            <div class="name">Chen Miao</div>
+            <p>Exactly. Divide and conquer. Let the strategist focus on strategy and the executor focus on execution.</p>
+          </div>
+          <div class="avatar green">C</div>
+        </div>
+
+        <div class="aside-note"><strong>Final translation:</strong> the human is still the commander. The agent can plan, edit, audit, and compile, but it should not silently decide the scientific direction.</div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <h2>The workflow as an operating system</h2>
+      <p class="lead">The method works because it converts a messy revision into a sequence of small, verifiable transactions.</p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">0</div>
+          <h3>Freeze the baseline</h3>
+          <p>Keep <code>original_main.tex</code> unchanged. Work on <code>main.tex</code>. Generate redline automatically.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">1</div>
+          <h3>Draft the response logic</h3>
+          <p>Understand the reviewer’s real concern before touching the manuscript.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2</div>
+          <h3>Create a plan under references/</h3>
+          <p>The plan defines allowed files, allowed locations, forbidden changes, rationale, and verification.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">3</div>
+          <h3>Human approves or splits</h3>
+          <p>If the plan is too broad, split it. If it is clear, execute it.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">4</div>
+          <h3>Executor applies only the plan</h3>
+          <p>Codex edits the allowed files and records execution notes.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">5</div>
+          <h3>Build and inspect PDF</h3>
+          <p>Compile manuscript and response letter. Check the actual PDF before claiming page or line locations.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">6</div>
+          <h3>Synchronize response letter</h3>
+          <p>The response letter must reflect real manuscript changes, not planned or imagined changes.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">7</div>
+          <h3>Commit and push</h3>
+          <p>Every accepted work package becomes a clean Git checkpoint.</p>
+        </div>
+      </div>
+
+      <pre><code>reviewer comment
+→ response logic
+→ references/reviewer1_comment1_revision1.md
+→ human approval
+→ edit main.tex only within the plan
+→ compile main.pdf + response_letter.pdf
+→ verify PDF locations
+→ update response letter
+→ generate redline
+→ git commit + push</code></pre>
+    </section>
+
+    <section id="roles">
+      <h2>Agent roles</h2>
+      <p class="lead">A single agent can perform all roles, but the workflow is clearer when the roles are separated.</p>
+      <div class="two-col">
+        <div class="callout purple">
+          <h3>Strategist Agent</h3>
+          <p>Diagnoses reviewer concerns, writes the plan, controls tone, and decides whether to split the task. It should not directly edit the manuscript.</p>
+        </div>
+        <div class="callout success">
+          <h3>Executor Agent</h3>
+          <p>Reads the approved plan, edits files, compiles LaTeX, generates redline, and records what was done. It should not freely reinterpret the science.</p>
+        </div>
+        <div class="callout warning">
+          <h3>Auditor Agent</h3>
+          <p>Checks the PDF, verifies page/line references, checks response-letter truthfulness, and ensures the edit did not exceed the plan.</p>
+        </div>
+        <div class="callout">
+          <h3>Human Commander</h3>
+          <p>Approves the plan, decides task granularity, judges scientific direction, and accepts or rejects the final revision.</p>
+        </div>
+      </div>
+
+      <h3>Cognitive load split</h3>
+      <p class="small">A rough conceptual chart: the workflow moves the hard reasoning out of the file-editing moment.</p>
+      <div class="bars">
+        <div class="bar-line"><div class="bar-label">Direct AI editing</div><div class="bar-track"><div class="bar-fill" style="width: 92%"></div></div><div class="bar-value">high risk</div></div>
+        <div class="bar-line"><div class="bar-label">Plan writing</div><div class="bar-track"><div class="bar-fill" style="width: 70%"></div></div><div class="bar-value">focused</div></div>
+        <div class="bar-line"><div class="bar-label">Plan execution</div><div class="bar-track"><div class="bar-fill" style="width: 42%"></div></div><div class="bar-value">bounded</div></div>
+        <div class="bar-line"><div class="bar-label">PDF auditing</div><div class="bar-track"><div class="bar-fill" style="width: 55%"></div></div><div class="bar-value">verifiable</div></div>
+      </div>
+    </section>
+
+    <section id="tables">
+      <h2>Tables for quick understanding</h2>
+
+      <h3>Problem → Skill mechanism</h3>
+      <table>
+        <thead>
+          <tr><th>Common failure</th><th>Plan-gated solution</th><th>Practical rule</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Agent changes too much</td><td>The plan defines exact allowed files and locations.</td><td>If it is not in the plan, do not edit it.</td></tr>
+          <tr><td>Response letter overclaims</td><td>Location claims are added only after PDF inspection.</td><td>Never write “we revised” before the manuscript is actually revised.</td></tr>
+          <tr><td>Revision history becomes unclear</td><td>Each work package has a plan and Git commit.</td><td>One plan, one execution, one commit.</td></tr>
+          <tr><td>Large tasks overload the agent</td><td>Broad plans are split before execution.</td><td>Vague plan → split plan.</td></tr>
+          <tr><td>New sessions lose context</td><td>The <code>references/</code> directory acts as external memory.</td><td>Let the agent read relevant plans before editing.</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Plan file checklist</h3>
+      <table>
+        <thead>
+          <tr><th>Plan section</th><th>What it should answer</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Source comment</td><td>Which reviewer/editor comment or internal goal triggered this?</td></tr>
+          <tr><td>Diagnosis</td><td>What is the real concern behind the comment?</td></tr>
+          <tr><td>Scope</td><td>Which files and locations may be changed?</td></tr>
+          <tr><td>Forbidden changes</td><td>What should the agent explicitly avoid?</td></tr>
+          <tr><td>Proposed edits</td><td>What exact changes should be made?</td></tr>
+          <tr><td>Acceptance criteria</td><td>How do we know the edit is complete?</td></tr>
+          <tr><td>Verification</td><td>How will the manuscript, response letter, references, and redline be checked?</td></tr>
+        </tbody>
+      </table>
+    </section>
+
     <section>
-      <h2>Core workflow</h2>
-      <div class="flow">Reviewer comment -> markdown plan -> human gate -> bounded edit -> build -> PDF audit -> redline -> commit</div>
+      <h2>Two revision modes compared</h2>
+      <div class="diagram" aria-label="Comparison between direct edit and plan-gated edit">
+        <svg width="1040" height="390" viewBox="0 0 1040 390" role="img" aria-label="Comparison between direct AI editing and plan-gated editing.">
+          <defs>
+            <marker id="arrow2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L8,3 z" fill="#718096" /></marker>
+          </defs>
+          <text x="40" y="42" font-size="22" font-weight="850" fill="#b34435">Direct editing mode</text>
+          <text x="560" y="42" font-size="22" font-weight="850" fill="#1f8a45">Plan-gated mode</text>
+
+          <g transform="translate(40,78)">
+            <rect x="0" y="0" width="420" height="250" rx="24" fill="#ffe3df" stroke="#f3b2aa"/>
+            <text x="28" y="42" font-size="16" font-weight="800" fill="#84281f">Reviewer comment</text>
+            <path d="M160 38 C205 38 215 64 240 94" stroke="#b34435" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+            <text x="252" y="102" font-size="16" font-weight="800" fill="#84281f">AI edits now</text>
+            <path d="M270 114 C190 136 330 160 190 190" stroke="#b34435" stroke-width="2.2" fill="none" stroke-dasharray="6 5" marker-end="url(#arrow2)"/>
+            <text x="30" y="204" font-size="14" fill="#84281f">Scope drift, mixed reasoning, uncertain claims, painful cleanup.</text>
+            <text x="30" y="230" font-size="14" font-weight="800" fill="#84281f">Human becomes firefighter.</text>
+          </g>
+
+          <g transform="translate(560,78)">
+            <rect x="0" y="0" width="420" height="250" rx="24" fill="#dff7e6" stroke="#72d38d"/>
+            <text x="24" y="42" font-size="16" font-weight="800" fill="#126b32">Reviewer comment</text>
+            <path d="M158 38 L210 38" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+            <text x="224" y="42" font-size="16" font-weight="800" fill="#126b32">Plan</text>
+            <path d="M270 38 L324 38" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+            <text x="24" y="96" font-size="16" font-weight="800" fill="#126b32">Human gate</text>
+            <path d="M116 91 L180 91" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+            <text x="194" y="96" font-size="16" font-weight="800" fill="#126b32">Execute</text>
+            <path d="M272 91 L330 91" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+            <text x="24" y="150" font-size="16" font-weight="800" fill="#126b32">Build + audit PDF</text>
+            <path d="M172 145 L240 145" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
+            <text x="254" y="150" font-size="16" font-weight="800" fill="#126b32">Commit</text>
+            <text x="24" y="204" font-size="14" fill="#126b32">Bounded scope, clear rationale, verified locations, reversible history.</text>
+            <text x="24" y="230" font-size="14" font-weight="800" fill="#126b32">Human remains commander.</text>
+          </g>
+        </svg>
+      </div>
     </section>
+
+    <section id="prompt">
+      <h2>Standard Codex instruction</h2>
+      <p class="lead">This prompt turns the chat philosophy into an executable agent instruction.</p>
+      <pre><code>You are working on an academic manuscript revision.
+
+First read the relevant plan in references/.
+Do not edit anything outside the plan.
+If the plan is too broad or vague, stop and propose a smaller plan.
+Apply only the approved edits.
+After editing, update the plan's Execution Notes.
+Run the build command.
+Inspect the generated PDF if available.
+Update the response letter only with verified changes.
+Generate redlined_main.tex when original_main.tex is available.
+Show git diff summary.
+Commit and push this work package.</code></pre>
+
+      <div class="two-col" style="margin-top:20px;">
+        <div class="callout danger">
+          <h3>Do not say</h3>
+          <p>“Revise the paper according to the reviewer comments.”</p>
+          <p class="small">This is too broad and invites uncontrolled editing.</p>
+        </div>
+        <div class="callout success">
+          <h3>Say instead</h3>
+          <p>“Read <code>references/reviewer2_comment6_reanalysis_plan.md</code>. Apply only the approved edits. Stop if anything is out of scope.”</p>
+          <p class="small">This gives the agent a boundary and a verification path.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="github">
+      <h2>How to use this page in a GitHub repository</h2>
+      <p class="lead">This HTML page can serve two roles: the origin story of the skill and the visual tutorial for new users.</p>
+      <pre><code>paper-revision-agent-skill/
+  README.md
+  SKILL.md
+  docs/
+    origin-chat.html
+  templates/
+    revision_plan.md
+    response_trace_audit.md
+    revision_task_index.md
+  prompts/
+    plan_prompt.md
+    apply_prompt.md
+    audit_prompt.md</code></pre>
+
+      <h3>Suggested README link</h3>
+      <pre><code>## Origin and tutorial
+
+The workflow was derived from a real paper-revision discussion.
+For a readable visual explanation, see:
+
+- [Origin chat and guide](docs/origin-chat.html)</code></pre>
+
+      <div class="callout purple">
+        <h3>Publishing note</h3>
+        <p>This page is intentionally written as a cleaned and translated origin narrative, not a raw private transcript. It keeps the technical method, the useful humor, and the design lessons, while removing unrelated discussion.</p>
+      </div>
+    </section>
+
+    <p class="footer">Plan-Gated Paper Revision Skill · Cleaned origin chat and visual guide · Self-contained HTML</p>
   </main>
 </body>
 </html>
