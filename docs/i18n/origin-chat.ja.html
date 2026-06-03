@@ -1,11 +1,11 @@
-<!doctype html>
+html
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Paper Revision Skill — 日本語</title>
-  <meta name="description" content="Full multilingual entry page for the Plan-Gated Paper Revision Skill guide." />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Paper Revision Skill — 日本語</title>
+<meta content="A cleaned, readable origin chat and practical guide for the Plan-Gated Paper Revision Skill." name="description"/>
+<style>
     :root {
       --bg: #f6f8fb;
       --paper: #ffffff;
@@ -428,328 +428,291 @@
       .bubble { box-shadow: none; }
     }
   </style>
-  <link rel="stylesheet" href="../site.css">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="../site.js"></script>
+<link href="../site.css" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<script defer="" src="../site.js"></script>
 </head>
 <body>
-  <main class="page">
-    <header class="site-header" aria-label="Site navigation">
-      <a class="site-brand" href="../index.html">Paper Revision Skill</a>
-      <nav class="site-nav" aria-label="Primary navigation">
-        <a href="../origin-chat.html">Full Guide</a>
-        <a href="../origin-chat-downloaded-package.html">Standalone</a>
-        <a href="https://github.com/lachlanchen/paper-revision-skill">GitHub</a>
-      </nav>
-      <div class="language-menu">
-        <label class="sr-only" for="language-select">Choose language</label>
-        <select id="language-select" data-language-select aria-label="Choose language">
+<main class="page">
+<header aria-label="Site navigation" class="site-header">
+<a class="site-brand" href="../index.html">Paper Revision Skill</a>
+<nav aria-label="Primary navigation" class="site-nav">
+<a href="../origin-chat.html">フルガイド</a>
+<a href="../origin-chat-downloaded-package.html">スタンドアロン</a>
+<a href="https://github.com/lachlanchen/paper-revision-skill">GitHub</a>
+</nav>
+<div class="language-menu">
+<label class="sr-only" for="language-select">言語を選択してください</label>
+<select aria-label="Choose language" data-language-select="" id="language-select">
 <option value="../origin-chat.html">English</option>
 <option value="origin-chat.ar.html">العربية</option>
 <option value="origin-chat.es.html">Español</option>
 <option value="origin-chat.fr.html">Français</option>
-<option value="origin-chat.ja.html" selected>日本語</option>
+<option selected="" value="origin-chat.ja.html">日本語</option>
 <option value="origin-chat.ko.html">한국어</option>
 <option value="origin-chat.vi.html">Tiếng Việt</option>
 <option value="origin-chat.zh-Hans.html">中文 (简体)</option>
 <option value="origin-chat.zh-Hant.html">中文（繁體）</option>
 <option value="origin-chat.de.html">Deutsch</option>
 <option value="origin-chat.ru.html">Русский</option>
-        </select>
-      </div>
-    </header>
-    <header class="hero">
-      <span class="eyebrow">起源チャット · Agent skill · 論文改訂エンジニアリング</span>
-      <h1>計画ゲート型 Paper Revision Skill</h1>
-      <p class="subtitle">AIを使った論文改訂を制御可能で追跡可能にし、混乱を減らす方法を説明する、整理された origin chat です。</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="#chat">チャットを読む</a>
-        <a class="btn" href="#workflow">ワークフローを見る</a>
-        <a class="btn" href="#github">GitHubで使う</a>
-      </div>
-    </header>
-
-    <nav class="nav" aria-label="Table of contents">
-      <a href="#idea">核心アイデア</a>
-      <a href="#chat">起源チャット</a>
-      <a href="#workflow">ワークフロー</a>
-      <a href="#roles">エージェント</a>
-      <a href="#tables">表</a>
-      <a href="#prompt">Prompt</a>
-      <a href="#github">GitHub</a>
-    </nav>
-
-    <section class="flat translation-status" aria-label="Translation status"><p class="lead">このページには、チャット、図表、テーブルを含む完全なガイドが入っています。全文翻訳は準備中のため、一部の詳細セクションは一時的に英語のままです。</p></section>
-
-    <section id="idea">
-      <h2>The idea in one sentence</h2>
-      <p class="lead"><strong>Do not let an AI agent think, edit, verify, and explain all at once.</strong> First force the reasoning into a Markdown plan, then let the editing agent execute only that approved plan.</p>
-      <div class="cards">
-        <article class="card">
-          <div class="num">1</div>
-          <h3>Think first</h3>
-          <p>Use a reasoning model to diagnose the reviewer concern and write a plan.</p>
-        </article>
-        <article class="card">
-          <div class="num">2</div>
-          <h3>Gate edits</h3>
-          <p>No plan, no manuscript changes. The plan is the edit boundary.</p>
-        </article>
-        <article class="card">
-          <div class="num">3</div>
-          <h3>Verify truth</h3>
-          <p>Compile, inspect the PDF, then update the response letter with verified locations.</p>
-        </article>
-        <article class="card">
-          <div class="num">4</div>
-          <h3>Commit history</h3>
-          <p>Each accepted work package becomes a clean Git step that can be reviewed or rolled back.</p>
-        </article>
-      </div>
-
-      <div class="diagram" aria-label="Plan gated workflow diagram">
-        <svg width="1040" height="260" viewBox="0 0 1040 260" role="img" aria-label="Reviewer comment goes to strategist, plan, human approval, executor, build, auditor, response letter and git.">
-          <defs>
-            <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
-              <path d="M0,0 L0,6 L8,3 z" fill="#718096" />
-            </marker>
-            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="7" stdDeviation="8" flood-color="#19213a" flood-opacity="0.12"/>
-            </filter>
-          </defs>
-          <a href="https://lazying.art" target="_blank" rel="noopener" aria-label="LazyingArt">
-            <image href="../assets/lazyingart-logo.png" x="18" y="12" width="190" height="56" preserveAspectRatio="xMinYMid meet" />
-          </a>
-          <rect x="18" y="88" width="120" height="76" rx="18" fill="#fff3d6" stroke="#f3d084" filter="url(#softShadow)" />
-          <text x="78" y="118" text-anchor="middle" font-size="14" font-weight="800" fill="#7a5200">Reviewer</text>
-          <text x="78" y="140" text-anchor="middle" font-size="12" fill="#7a5200">comment</text>
-
-          <path d="M142 126 C168 126 174 126 198 126" stroke="#718096" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-
-          <rect x="202" y="70" width="142" height="112" rx="20" fill="#eee7ff" stroke="#c7b8ff" filter="url(#softShadow)" />
-          <text x="273" y="108" text-anchor="middle" font-size="14" font-weight="800" fill="#5d3eb2">Strategist</text>
-          <text x="273" y="132" text-anchor="middle" font-size="12" fill="#5d3eb2">diagnose + plan</text>
-          <text x="273" y="154" text-anchor="middle" font-size="12" fill="#5d3eb2">not edit</text>
-
-          <path d="M348 126 C374 126 380 126 404 126" stroke="#718096" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-
-          <rect x="408" y="78" width="132" height="96" rx="20" fill="#dff7e6" stroke="#72d38d" filter="url(#softShadow)" />
-          <text x="474" y="112" text-anchor="middle" font-size="14" font-weight="800" fill="#1f8a45">Plan file</text>
-          <text x="474" y="136" text-anchor="middle" font-size="12" fill="#1f8a45">references/*.md</text>
-
-          <path d="M544 126 C570 126 576 126 600 126" stroke="#718096" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-
-          <rect x="604" y="78" width="132" height="96" rx="20" fill="#ffffff" stroke="#cbd5e1" filter="url(#softShadow)" />
-          <text x="670" y="112" text-anchor="middle" font-size="14" font-weight="800" fill="#334155">Human gate</text>
-          <text x="670" y="136" text-anchor="middle" font-size="12" fill="#64748b">approve or split</text>
-
-          <path d="M740 126 C766 126 772 126 796 126" stroke="#718096" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
-
-          <rect x="800" y="70" width="142" height="112" rx="20" fill="#dcecff" stroke="#7fb8ff" filter="url(#softShadow)" />
-          <text x="871" y="108" text-anchor="middle" font-size="14" font-weight="800" fill="#246bca">Executor</text>
-          <text x="871" y="132" text-anchor="middle" font-size="12" fill="#246bca">edit + build</text>
-          <text x="871" y="154" text-anchor="middle" font-size="12" fill="#246bca">only in scope</text>
-
-          <path d="M872 186 C872 222 196 222 196 200" stroke="#718096" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
-          <path d="M196 186 L188 200 L204 200 Z" fill="#718096"/>
-          <text x="531" y="242" text-anchor="middle" font-size="13" fill="#64748b">If the task is too broad: split it into a smaller plan, then loop again.</text>
-
-          <rect x="466" y="12" width="160" height="42" rx="16" fill="#0f172a" opacity=".96"/>
-          <text x="546" y="38" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">No plan → no edit</text>
-        </svg>
-      </div>
-    </section>
-
-    <section id="chat">
-      <h2>Cleaned origin chat</h2>
-      <p class="lead">This is a readable, translated, and lightly elaborated version of the original chat between <strong>Chen Miao</strong> and <strong>Feifei Robbie</strong>. Unrelated historical banter was removed. The funny analogy was kept because it captures the architecture: strategist, executor, and human commander.</p>
-
-      <div class="chat-wrap">
-        <div class="msg-row right">
-          <div class="bubble green">
-            <div class="name">Chen Miao</div>
-            <p>I used to have a workflow for revising papers with AI. The key is to keep the process linear, otherwise the whole revision becomes messy.</p>
-            <p>First, keep the submitted version as <code>original_main.tex</code>. The working file is still called <code>main.tex</code>. Then let the agent generate <code>redlined_main.tex</code>. Even if the redline is not submitted, it is extremely useful for checking what changed.</p>
-          </div>
-          <div class="avatar green">C</div>
-        </div>
-
-        <div class="msg-row">
-          <div class="avatar blue">R</div>
-          <div class="bubble blue">
-            <div class="name">Feifei Robbie</div>
-            <p>So the baseline is frozen, the current manuscript keeps the same filename, and the redline is generated automatically?</p>
-          </div>
-        </div>
-
-        <div class="msg-row right">
-          <div class="bubble green">
-            <div class="name">Chen Miao</div>
-            <p>Exactly. Then ask AI to draft the response letter first. Go reviewer comment by reviewer comment. First understand the response logic, then ask AI to make a manuscript revision plan, save it as Markdown, check it, and only then execute it.</p>
-            <p>Loop through all comments this way. Also write a build script that automatically compiles the latest manuscript, latest response letter, and redline version.</p>
-          </div>
-          <div class="avatar green">C</div>
-        </div>
-
-        <div class="aside-note"><strong>Design note:</strong> the response letter is not an afterthought. It is the logical map of the revision. If the response cannot be defended, the manuscript edit is probably not ready.</div>
-
-        <div class="msg-row right">
-          <div class="bubble green">
-            <div class="name">Chen Miao</div>
-            <p>Before every meaningful edit, create a Markdown plan. Put it under <code>references/</code>. Later, when you wonder why something was changed, the reason is there. The agent can also read those files and understand the history.</p>
-            <p>Without a plan, you only have the result, not the thinking process.</p>
-          </div>
-          <div class="avatar green">C</div>
-        </div>
-
-        <div class="msg-row">
-          <div class="avatar blue">R</div>
-          <div class="bubble blue">
-            <div class="name">Feifei Robbie</div>
-            <p>Do you mean one Markdown file per reviewer issue, or one file that keeps appending the whole process?</p>
-          </div>
-        </div>
-
-        <div class="msg-row right">
-          <div class="bubble green">
-            <div class="name">Chen Miao</div>
-            <p>Usually many files. Each file corresponds to the current revision package. For example: <code>reviewer1_comment1_revision1.md</code>, <code>figure4_caption_shorten_plan.md</code>, or <code>main_text_shorten_plan.md</code>.</p>
-            <p>The size is dynamic. A plan can cover one small paragraph, one figure caption, one reviewer comment, or a global shortening pass. But plan and execution should correspond one-to-one.</p>
-          </div>
-          <div class="avatar green">C</div>
-        </div>
-
-        <div class="msg-row">
-          <div class="avatar blue">R</div>
-          <div class="bubble blue">
-            <div class="name">Feifei Robbie</div>
-            <p>So the “round” you mean is not every tiny Codex message. It is the moment when we actually let Codex execute a work package?</p>
-          </div>
-        </div>
-
-        <div class="msg-row right">
-          <div class="bubble green">
-            <div class="name">Chen Miao</div>
-            <p>Yes. It is the exact package you hand to Codex and say: apply this.</p>
-            <p>If the plan feels easy for the agent, let it execute. If it looks too difficult, split the plan into smaller plans. You can often tell from the plan quality whether the agent is struggling.</p>
-          </div>
-          <div class="avatar green">C</div>
-        </div>
-
-        <div class="aside-note"><strong>Practical rule:</strong> if the plan sounds vague, the edit will probably become vague. Split before execution, not after the manuscript is damaged.</div>
-
-        <div class="msg-row">
-          <div class="avatar blue">R</div>
-          <div class="bubble blue">
-            <div class="name">Feifei Robbie</div>
-            <p>Does the plan come from you, from ChatGPT, or from Codex itself?</p>
-          </div>
-        </div>
-
-        <div class="msg-row right">
-          <div class="bubble green">
-            <div class="name">Chen Miao</div>
-            <p>Any of them can produce it, but the final plan must be something I approve. Codex is good at editing files, fixing LaTeX, and compiling. But it is weaker at deciding why and how to revise the science and wording.</p>
-            <p>So I often ask ChatGPT for the revision strategy, save that as Markdown, and then let Codex apply it.</p>
-            <p><strong>Knowledge: ChatGPT. Technical execution: Codex.</strong></p>
-          </div>
-          <div class="avatar green">C</div>
-        </div>
-
-        <div class="msg-row">
-          <div class="avatar blue">R</div>
-          <div class="bubble blue">
-            <div class="name">Feifei Robbie</div>
-            <p>What if the plan is executed but the result is not ideal and needs small tuning? Do you create a new Markdown file for every tiny adjustment?</p>
-          </div>
-        </div>
-
-        <div class="msg-row right">
-          <div class="bubble green">
-            <div class="name">Chen Miao</div>
-            <p>Not necessary. The important thing is not to record every tiny chat message. The important thing is that the final executed plan is a good plan.</p>
-            <p>If the plan is not good, revise it, overwrite it, or ask another model to improve it. But the agent should be constrained by the final plan. The core is controlling the edit scope.</p>
-          </div>
-          <div class="avatar green">C</div>
-        </div>
-
-        <div class="msg-row right">
-          <div class="bubble green">
-            <div class="name">Chen Miao</div>
-            <p>I discovered that when the agent is not strong at a task, it starts to edit randomly. The more it edits, the more chaotic it becomes. But once I use a plan before editing, the process becomes controllable.</p>
-            <p>It reduces the burden. The agent does not need to think about what to change and how to edit the files at the same time.</p>
-          </div>
-          <div class="avatar green">C</div>
-        </div>
-
-        <div class="msg-row">
-          <div class="avatar blue">R</div>
-          <div class="bubble blue">
-            <div class="name">Feifei Robbie</div>
-            <p>So you are like Zhuge Liang setting up the strategy, and Codex is Zhao Yun going to the battlefield?</p>
-          </div>
-        </div>
-
-        <div class="msg-row right">
-          <div class="bubble green">
-            <div class="name">Chen Miao</div>
-            <p>Exactly. Divide and conquer. Let the strategist focus on strategy and the executor focus on execution.</p>
-          </div>
-          <div class="avatar green">C</div>
-        </div>
-
-        <div class="aside-note"><strong>Final translation:</strong> the human is still the commander. The agent can plan, edit, audit, and compile, but it should not silently decide the scientific direction.</div>
-      </div>
-    </section>
-
-    <section id="workflow">
-      <h2>The workflow as an operating system</h2>
-      <p class="lead">The method works because it converts a messy revision into a sequence of small, verifiable transactions.</p>
-
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-dot">0</div>
-          <h3>Freeze the baseline</h3>
-          <p>Keep <code>original_main.tex</code> unchanged. Work on <code>main.tex</code>. Generate redline automatically.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">1</div>
-          <h3>Draft the response logic</h3>
-          <p>Understand the reviewer’s real concern before touching the manuscript.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">2</div>
-          <h3>Create a plan under references/</h3>
-          <p>The plan defines allowed files, allowed locations, forbidden changes, rationale, and verification.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">3</div>
-          <h3>Human approves or splits</h3>
-          <p>If the plan is too broad, split it. If it is clear, execute it.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">4</div>
-          <h3>Executor applies only the plan</h3>
-          <p>Codex edits the allowed files and records execution notes.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">5</div>
-          <h3>Build and inspect PDF</h3>
-          <p>Compile manuscript and response letter. Check the actual PDF before claiming page or line locations.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">6</div>
-          <h3>Synchronize response letter</h3>
-          <p>The response letter must reflect real manuscript changes, not planned or imagined changes.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">7</div>
-          <h3>Commit and push</h3>
-          <p>Every accepted work package becomes a clean Git checkpoint.</p>
-        </div>
-      </div>
-
-      <pre><code>reviewer comment
+</select>
+</div>
+</header>
+<header class="hero">
+<span class="eyebrow">オリジンチャット・エージェントスキル・リビジョンエンジニアリング</span>
+<h1>Plan-Gated Paper Revision Skill</h1>
+<p class="subtitle">AI を利用した原稿改訂を管理し、追跡可能にし、混乱を軽減する方法を説明する、クリーンで軽く脚色されたオリジン チャット。</p>
+<div class="hero-actions">
+<a class="btn primary" href="#chat">チャットを読む</a>
+<a class="btn" href="#workflow">ワークフローを見る</a>
+<a class="btn" href="#github">GitHub で使用</a>
+</div>
+</header>
+<nav aria-label="Table of contents" class="nav">
+<a href="#idea">核となるアイデア</a>
+<a href="#chat">オリジンチャット</a>
+<a href="#workflow">ワークフロー</a>
+<a href="#roles">エージェント</a>
+<a href="#tables">テーブル</a>
+<a href="#prompt">プロンプト</a>
+<a href="#github">GitHub</a>
+</nav>
+<section id="idea">
+<h2>一言で言えばアイデア</h2>
+<p class="lead"><strong>AI エージェントに一度に考え、編集、検証、説明をさせないでください。</strong> まず推論を Markdown 計画に強制的に組み込んでから、編集エージェントにその承認された計画のみを実行させます。</p>
+<div class="cards">
+<article class="card">
+<div class="num">1</div>
+<h3>まず考えてください</h3>
+<p>推論モデルを使用してレビュー担当者の懸念を診断し、計画を作成します。</p>
+</article>
+<article class="card">
+<div class="num">2</div>
+<h3>ゲート編集</h3>
+<p>計画も原稿の変更もありません。プランは編集境界です。</p>
+</article>
+<article class="card">
+<div class="num">3</div>
+<h3>真実を検証する</h3>
+<p>PDF をコンパイルして検査し、確認された場所で応答レターを更新します。</p>
+</article>
+<article class="card">
+<div class="num">4</div>
+<h3>コミット履歴</h3>
+<p>受け入れられた各作業パッケージは、レビューまたはロールバックできるクリーンな Git ステップになります。</p>
+</article>
+</div>
+<div aria-label="Plan gated workflow diagram" class="diagram">
+<svg aria-label="Reviewer comment goes to strategist, plan, human approval, executor, build, auditor, response letter and git." height="260" role="img" viewBox="0 0 1040 260" width="1040">
+<defs>
+<marker id="arrow" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="7" refY="3">
+<path d="M0,0 L0,6 L8,3 z" fill="#718096"></path>
+</marker>
+<filter height="140%" id="softShadow" width="140%" x="-20%" y="-20%">
+<feDropShadow dx="0" dy="7" flood-color="#19213a" flood-opacity="0.12" stdDeviation="8"></feDropShadow>
+</filter>
+</defs>
+<a aria-label="LazyingArt" href="https://lazying.art" rel="noopener" target="_blank">
+<image height="56" href="../assets/lazyingart-logo.png" preserveAspectRatio="xMinYMid meet" width="190" x="18" y="12"/>
+</a>
+<rect fill="#fff3d6" filter="url(#softShadow)" height="76" rx="18" stroke="#f3d084" width="120" x="18" y="88"></rect>
+<text fill="#7a5200" font-size="14" font-weight="800" text-anchor="middle" x="78" y="118">査読者</text>
+<text fill="#7a5200" font-size="12" text-anchor="middle" x="78" y="140">コメント</text>
+<path d="M142 126 C168 126 174 126 198 126" fill="none" marker-end="url(#arrow)" stroke="#718096" stroke-width="2"></path>
+<rect fill="#eee7ff" filter="url(#softShadow)" height="112" rx="20" stroke="#c7b8ff" width="142" x="202" y="70"></rect>
+<text fill="#5d3eb2" font-size="14" font-weight="800" text-anchor="middle" x="273" y="108">戦略家</text>
+<text fill="#5d3eb2" font-size="12" text-anchor="middle" x="273" y="132">診断+計画</text>
+<text fill="#5d3eb2" font-size="12" text-anchor="middle" x="273" y="154">編集しない</text>
+<path d="M348 126 C374 126 380 126 404 126" fill="none" marker-end="url(#arrow)" stroke="#718096" stroke-width="2"></path>
+<rect fill="#dff7e6" filter="url(#softShadow)" height="96" rx="20" stroke="#72d38d" width="132" x="408" y="78"></rect>
+<text fill="#1f8a45" font-size="14" font-weight="800" text-anchor="middle" x="474" y="112">計画ファイル</text>
+<text fill="#1f8a45" font-size="12" text-anchor="middle" x="474" y="136">references/*.md</text>
+<path d="M544 126 C570 126 576 126 600 126" fill="none" marker-end="url(#arrow)" stroke="#718096" stroke-width="2"></path>
+<rect fill="#ffffff" filter="url(#softShadow)" height="96" rx="20" stroke="#cbd5e1" width="132" x="604" y="78"></rect>
+<text fill="#334155" font-size="14" font-weight="800" text-anchor="middle" x="670" y="112">人間の門</text>
+<text fill="#64748b" font-size="12" text-anchor="middle" x="670" y="136">承認または分割</text>
+<path d="M740 126 C766 126 772 126 796 126" fill="none" marker-end="url(#arrow)" stroke="#718096" stroke-width="2"></path>
+<rect fill="#dcecff" filter="url(#softShadow)" height="112" rx="20" stroke="#7fb8ff" width="142" x="800" y="70"></rect>
+<text fill="#246bca" font-size="14" font-weight="800" text-anchor="middle" x="871" y="108">執行者</text>
+<text fill="#246bca" font-size="12" text-anchor="middle" x="871" y="132">編集+ビルド</text>
+<text fill="#246bca" font-size="12" text-anchor="middle" x="871" y="154">範囲内のみ</text>
+<path d="M872 186 C872 222 196 222 196 200" fill="none" stroke="#718096" stroke-dasharray="6 6" stroke-width="2"></path>
+<path d="M196 186 L188 200 L204 200 Z" fill="#718096"></path>
+<text fill="#64748b" font-size="13" text-anchor="middle" x="531" y="242">タスクが広すぎる場合は、タスクをより小さなプランに分割し、再度ループします。</text>
+<rect fill="#0f172a" height="42" opacity=".96" rx="16" width="160" x="466" y="12"></rect>
+<text fill="#fff" font-size="13" font-weight="800" text-anchor="middle" x="546" y="38">計画なし → 編集なし</text>
+</svg>
+</div>
+</section>
+<section id="chat">
+<h2>クリーンなオリジンチャット</h2>
+<p class="lead">これは、元のチャットを読みやすく、翻訳し、軽く推敲したバージョンです。 <strong>Chen Miao</strong> そして <strong>Feifei Robbie</strong>。無関係な歴史的な冗談は削除されました。戦略家、執行者、そして人間の指揮官というアーキテクチャーを捉えているため、この面白いたとえがそのまま残されました。</p>
+<div class="chat-wrap">
+<div class="msg-row right">
+<div class="bubble green">
+<div class="name">Chen Miao</div>
+<p>以前は AI を使用して論文を改訂するワークフローを使用していました。重要なのは、プロセスを直線的に保つことです。そうしないと、リビジョン全体が乱雑になってしまいます。</p>
+<p>まず、提出されたバージョンを次のように保持します。 <code>original_main.tex</code>。作業ファイルはまだ呼び出されています <code>main.tex</code>。次に、エージェントに生成させます <code>redlined_main.tex</code>。レッドラインを提出していない場合でも、何が変わったのかを確認するのに非常に便利です。</p>
+</div>
+<div class="avatar green">C</div>
+</div>
+<div class="msg-row">
+<div class="avatar blue">R</div>
+<div class="bubble blue">
+<div class="name">Feifei Robbie</div>
+<p>つまり、ベースラインは凍結され、現在の原稿は同じファイル名を維持し、レッドラインは自動的に生成されるということですか?</p>
+</div>
+</div>
+<div class="msg-row right">
+<div class="bubble green">
+<div class="name">Chen Miao</div>
+<p>まさにその通りです。次に、AI に最初に応答レターの下書きを依頼します。査読者のコメントを査読者のコメントごとに移動します。まず応答ロジックを理解してから、AI に原稿修正計画を作成してもらい、それを Markdown として保存し、確認してから実行します。</p>
+<p>このようにしてすべてのコメントをループします。また、最新の原稿、最新の応答レター、およびレッドライン バージョンを自動的にコンパイルするビルド スクリプトも作成します。</p>
+</div>
+<div class="avatar green">C</div>
+</div>
+<div class="aside-note"><strong>デザインノート:</strong> 返答レターは思いつきではありません。リビジョンの論理マップです。返答を擁護できない場合は、原稿編集の準備ができていない可能性があります。</div>
+<div class="msg-row right">
+<div class="bubble green">
+<div class="name">Chen Miao</div>
+<p>意味のある編集を行う前に、Markdown 計画を作成してください。下に置きます <code>references/</code>。後で、なぜ何かが変更されたのかと疑問に思うとき、理由はそこにあります。エージェントはこれらのファイルを読み取り、履歴を理解することもできます。</p>
+<p>計画がなければ、結果だけが得られ、思考プロセスは得られません。</p>
+</div>
+<div class="avatar green">C</div>
+</div>
+<div class="msg-row">
+<div class="avatar blue">R</div>
+<div class="bubble blue">
+<div class="name">Feifei Robbie</div>
+<p>レビュー担当者の問題ごとに 1 つの Markdown ファイルということですか、それともプロセス全体に追加し続ける 1 つのファイルという意味ですか?</p>
+</div>
+</div>
+<div class="msg-row right">
+<div class="bubble green">
+<div class="name">Chen Miao</div>
+<p>通常、多くのファイルが含まれます。各ファイルは現在のリビジョン パッケージに対応します。たとえば: <code>reviewer1_comment1_revision1.md</code>, <code>figure4_caption_shorten_plan.md</code>、または <code>main_text_shorten_plan.md</code>.</p>
+<p>サイズはダイナミックです。計画には、1 つの小さな段落、1 つの図のキャプション、1 つの査読者コメント、またはグローバル短縮パスを含めることができます。ただし、計画と実行は 1 対 1 で対応する必要があります。</p>
+</div>
+<div class="avatar green">C</div>
+</div>
+<div class="msg-row">
+<div class="avatar blue">R</div>
+<div class="bubble blue">
+<div class="name">Feifei Robbie</div>
+<p>つまり、あなたが意味する「ラウンド」とは、すべての小さな Codex メッセージではありません。実際にCodexにワークパッケージを実行させた瞬間ですかね？</p>
+</div>
+</div>
+<div class="msg-row right">
+<div class="bubble green">
+<div class="name">Chen Miao</div>
+<p>はい。これは、Codex に渡して「これを適用してください」と言うパッケージとまったく同じです。</p>
+<p>エージェントにとって計画が簡単だと思われる場合は、実行させてください。難しすぎると思われる場合は、計画を小さな計画に分割してください。多くの場合、プランの品質から、エージェントが苦労しているかどうかがわかります。</p>
+</div>
+<div class="avatar green">C</div>
+</div>
+<div class="aside-note"><strong>実際的なルール:</strong> 計画が曖昧に聞こえると、編集も曖昧になる可能性があります。原稿が破損した後ではなく、実行前に分割します。</div>
+<div class="msg-row">
+<div class="avatar blue">R</div>
+<div class="bubble blue">
+<div class="name">Feifei Robbie</div>
+<p>計画はあなたからのものですか、ChatGPT からのものですか、それとも Codex 自体からのものですか?</p>
+</div>
+</div>
+<div class="msg-row right">
+<div class="bubble green">
+<div class="name">Chen Miao</div>
+<p>誰でも作成できますが、最終的な計画は私が承認するものでなければなりません。 Codex は、ファイルの編集、LaTeX の修正、コンパイルが得意です。しかし、科学や表現を修正する理由と方法を決定するのは苦手です。</p>
+<p>そのため、私はよく ChatGPT にリビジョン戦略を尋ね、それを Markdown として保存し、それを Codex に適用させます。</p>
+<p><strong>知識: ChatGPT。テクニカル実行: Codex。</strong></p>
+</div>
+<div class="avatar green">C</div>
+</div>
+<div class="msg-row">
+<div class="avatar blue">R</div>
+<div class="bubble blue">
+<div class="name">Feifei Robbie</div>
+<p>計画が実行されたものの、結果が理想的ではなく、小さな調整が必要な場合はどうすればよいでしょうか?微調整するたびに新しい Markdown ファイルを作成しますか?</p>
+</div>
+</div>
+<div class="msg-row right">
+<div class="bubble green">
+<div class="name">Chen Miao</div>
+<p>必要ありません。重要なことは、小さなチャット メッセージをすべて記録しないことです。重要なことは、最終的に実行された計画が適切な計画であるということです。</p>
+<p>計画が良くない場合は、修正したり、上書きしたり、別のモデルに改善を依頼したりします。ただし、エージェントは最終計画に制約される必要があります。コアは編集範囲を制御します。</p>
+</div>
+<div class="avatar green">C</div>
+</div>
+<div class="msg-row right">
+<div class="bubble green">
+<div class="name">Chen Miao</div>
+<p>エージェントがタスクに強くない場合、ランダムに編集を開始することがわかりました。編集すればするほど、カオスになっていきます。しかし、編集前に計画を立てれば、プロセスは制御可能になります。</p>
+<p>負担が軽減されます。エージェントは、何を変更するか、どのようにファイルを編集するかを同時に考える必要はありません。</p>
+</div>
+<div class="avatar green">C</div>
+</div>
+<div class="msg-row">
+<div class="avatar blue">R</div>
+<div class="bubble blue">
+<div class="name">Feifei Robbie</div>
+<p>つまり、Zhuge Liang が戦略を設定し、Codex が Zhao Yun が戦場に行くようなものですか?</p>
+</div>
+</div>
+<div class="msg-row right">
+<div class="bubble green">
+<div class="name">Chen Miao</div>
+<p>まさにその通りです。分割して征服する。戦略家は戦略に集中し、執行者は実行に集中しましょう。</p>
+</div>
+<div class="avatar green">C</div>
+</div>
+<div class="aside-note"><strong>最終的な翻訳:</strong> 依然として人間が指揮官です。エージェントは計画、編集、監査、編集を行うことができますが、科学的な方向性を黙って決定するべきではありません。</div>
+</div>
+</section>
+<section id="workflow">
+<h2>オペレーティング システムとしてのワークフロー</h2>
+<p class="lead">この方法が機能するのは、乱雑なリビジョンを一連の小さな検証可能なトランザクションに変換するためです。</p>
+<div class="timeline">
+<div class="tl-item">
+<div class="tl-dot">0</div>
+<h3>ベースラインを凍結する</h3>
+<p>キープする <code>original_main.tex</code> 変わらない。取り組む <code>main.tex</code>。レッドラインを自動的に生成します。</p>
+</div>
+<div class="tl-item">
+<div class="tl-dot">1</div>
+<h3>応答ロジックの草案を作成する</h3>
+<p>原稿に触れる前に、査読者の本当の懸念を理解してください。</p>
+</div>
+<div class="tl-item">
+<div class="tl-dot">2</div>
+<h3>references/ の下にプランを作成します</h3>
+<p>この計画では、許可されるファイル、許可される場所、禁止される変更、根拠、検証が定義されます。</p>
+</div>
+<div class="tl-item">
+<div class="tl-dot">3</div>
+<h3>人間が承認するか分裂するか</h3>
+<p>計画が大きすぎる場合は分割してください。明確であれば実行してください。</p>
+</div>
+<div class="tl-item">
+<div class="tl-dot">4</div>
+<h3>執行者は計画のみを適用します</h3>
+<p>Codex は、許可されたファイルを編集し、実行メモを記録します。</p>
+</div>
+<div class="tl-item">
+<div class="tl-dot">5</div>
+<h3>PDF の構築と検査</h3>
+<p>原稿と返答レターを作成します。ページまたは行の位置を要求する前に、実際の PDF を確認してください。</p>
+</div>
+<div class="tl-item">
+<div class="tl-dot">6</div>
+<h3>応答レターを同期する</h3>
+<p>返答レターには、計画された変更や想像上の変更ではなく、実際の原稿の変更が反映されている必要があります。</p>
+</div>
+<div class="tl-item">
+<div class="tl-dot">7</div>
+<h3>コミットしてプッシュする</h3>
+<p>受け入れられたすべての作業パッケージは、クリーンな Git チェックポイントになります。</p>
+</div>
+</div>
+<pre><code>reviewer comment
 → response logic
 → references/reviewer1_comment1_revision1.md
 → human approval
@@ -759,118 +722,109 @@
 → update response letter
 → generate redline
 → git commit + push</code></pre>
-    </section>
-
-    <section id="roles">
-      <h2>Agent roles</h2>
-      <p class="lead">A single agent can perform all roles, but the workflow is clearer when the roles are separated.</p>
-      <div class="two-col">
-        <div class="callout purple">
-          <h3>Strategist Agent</h3>
-          <p>Diagnoses reviewer concerns, writes the plan, controls tone, and decides whether to split the task. It should not directly edit the manuscript.</p>
-        </div>
-        <div class="callout success">
-          <h3>Executor Agent</h3>
-          <p>Reads the approved plan, edits files, compiles LaTeX, generates redline, and records what was done. It should not freely reinterpret the science.</p>
-        </div>
-        <div class="callout warning">
-          <h3>Auditor Agent</h3>
-          <p>Checks the PDF, verifies page/line references, checks response-letter truthfulness, and ensures the edit did not exceed the plan.</p>
-        </div>
-        <div class="callout">
-          <h3>Human Commander</h3>
-          <p>Approves the plan, decides task granularity, judges scientific direction, and accepts or rejects the final revision.</p>
-        </div>
-      </div>
-
-      <h3>Cognitive load split</h3>
-      <p class="small">A rough conceptual chart: the workflow moves the hard reasoning out of the file-editing moment.</p>
-      <div class="bars">
-        <div class="bar-line"><div class="bar-label">Direct AI editing</div><div class="bar-track"><div class="bar-fill" style="width: 92%"></div></div><div class="bar-value">high risk</div></div>
-        <div class="bar-line"><div class="bar-label">Plan writing</div><div class="bar-track"><div class="bar-fill" style="width: 70%"></div></div><div class="bar-value">focused</div></div>
-        <div class="bar-line"><div class="bar-label">Plan execution</div><div class="bar-track"><div class="bar-fill" style="width: 42%"></div></div><div class="bar-value">bounded</div></div>
-        <div class="bar-line"><div class="bar-label">PDF auditing</div><div class="bar-track"><div class="bar-fill" style="width: 55%"></div></div><div class="bar-value">verifiable</div></div>
-      </div>
-    </section>
-
-    <section id="tables">
-      <h2>Tables for quick understanding</h2>
-
-      <h3>Problem → Skill mechanism</h3>
-      <table>
-        <thead>
-          <tr><th>Common failure</th><th>Plan-gated solution</th><th>Practical rule</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Agent changes too much</td><td>The plan defines exact allowed files and locations.</td><td>If it is not in the plan, do not edit it.</td></tr>
-          <tr><td>Response letter overclaims</td><td>Location claims are added only after PDF inspection.</td><td>Never write “we revised” before the manuscript is actually revised.</td></tr>
-          <tr><td>Revision history becomes unclear</td><td>Each work package has a plan and Git commit.</td><td>One plan, one execution, one commit.</td></tr>
-          <tr><td>Large tasks overload the agent</td><td>Broad plans are split before execution.</td><td>Vague plan → split plan.</td></tr>
-          <tr><td>New sessions lose context</td><td>The <code>references/</code> directory acts as external memory.</td><td>Let the agent read relevant plans before editing.</td></tr>
-        </tbody>
-      </table>
-
-      <h3>Plan file checklist</h3>
-      <table>
-        <thead>
-          <tr><th>Plan section</th><th>What it should answer</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Source comment</td><td>Which reviewer/editor comment or internal goal triggered this?</td></tr>
-          <tr><td>Diagnosis</td><td>What is the real concern behind the comment?</td></tr>
-          <tr><td>Scope</td><td>Which files and locations may be changed?</td></tr>
-          <tr><td>Forbidden changes</td><td>What should the agent explicitly avoid?</td></tr>
-          <tr><td>Proposed edits</td><td>What exact changes should be made?</td></tr>
-          <tr><td>Acceptance criteria</td><td>How do we know the edit is complete?</td></tr>
-          <tr><td>Verification</td><td>How will the manuscript, response letter, references, and redline be checked?</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section>
-      <h2>Two revision modes compared</h2>
-      <div class="diagram" aria-label="Comparison between direct edit and plan-gated edit">
-        <svg width="1040" height="390" viewBox="0 0 1040 390" role="img" aria-label="Comparison between direct AI editing and plan-gated editing.">
-          <defs>
-            <marker id="arrow2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L8,3 z" fill="#718096" /></marker>
-          </defs>
-          <text x="40" y="42" font-size="22" font-weight="850" fill="#b34435">Direct editing mode</text>
-          <text x="560" y="42" font-size="22" font-weight="850" fill="#1f8a45">Plan-gated mode</text>
-
-          <g transform="translate(40,78)">
-            <rect x="0" y="0" width="420" height="250" rx="24" fill="#ffe3df" stroke="#f3b2aa"/>
-            <text x="28" y="42" font-size="16" font-weight="800" fill="#84281f">Reviewer comment</text>
-            <path d="M160 38 C205 38 215 64 240 94" stroke="#b34435" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
-            <text x="252" y="102" font-size="16" font-weight="800" fill="#84281f">AI edits now</text>
-            <path d="M270 114 C190 136 330 160 190 190" stroke="#b34435" stroke-width="2.2" fill="none" stroke-dasharray="6 5" marker-end="url(#arrow2)"/>
-            <text x="30" y="204" font-size="14" fill="#84281f">Scope drift, mixed reasoning, uncertain claims, painful cleanup.</text>
-            <text x="30" y="230" font-size="14" font-weight="800" fill="#84281f">Human becomes firefighter.</text>
-          </g>
-
-          <g transform="translate(560,78)">
-            <rect x="0" y="0" width="420" height="250" rx="24" fill="#dff7e6" stroke="#72d38d"/>
-            <text x="24" y="42" font-size="16" font-weight="800" fill="#126b32">Reviewer comment</text>
-            <path d="M158 38 L210 38" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
-            <text x="224" y="42" font-size="16" font-weight="800" fill="#126b32">Plan</text>
-            <path d="M270 38 L324 38" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
-            <text x="24" y="96" font-size="16" font-weight="800" fill="#126b32">Human gate</text>
-            <path d="M116 91 L180 91" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
-            <text x="194" y="96" font-size="16" font-weight="800" fill="#126b32">Execute</text>
-            <path d="M272 91 L330 91" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
-            <text x="24" y="150" font-size="16" font-weight="800" fill="#126b32">Build + audit PDF</text>
-            <path d="M172 145 L240 145" stroke="#1f8a45" stroke-width="2" fill="none" marker-end="url(#arrow2)"/>
-            <text x="254" y="150" font-size="16" font-weight="800" fill="#126b32">Commit</text>
-            <text x="24" y="204" font-size="14" fill="#126b32">Bounded scope, clear rationale, verified locations, reversible history.</text>
-            <text x="24" y="230" font-size="14" font-weight="800" fill="#126b32">Human remains commander.</text>
-          </g>
-        </svg>
-      </div>
-    </section>
-
-    <section id="prompt">
-      <h2>Standard Codex instruction</h2>
-      <p class="lead">This prompt turns the chat philosophy into an executable agent instruction.</p>
-      <pre><code>You are working on an academic manuscript revision.
+</section>
+<section id="roles">
+<h2>エージェントの役割</h2>
+<p class="lead">1 人のエージェントがすべての役割を実行できますが、役割を分離するとワークフローがより明確になります。</p>
+<div class="two-col">
+<div class="callout purple">
+<h3>戦略エージェント</h3>
+<p>レビュー担当者の懸念を診断し、計画を作成し、トーンを制御し、タスクを分割するかどうかを決定します。原稿を直接編集してはいけません。</p>
+</div>
+<div class="callout success">
+<h3>執行者エージェント</h3>
+<p>承認された計画を読み取り、ファイルを編集し、LaTeX をコンパイルし、レッドラインを生成し、実行内容を記録します。科学を自由に再解釈すべきではありません。</p>
+</div>
+<div class="callout warning">
+<h3>監査代理人</h3>
+<p>PDF をチェックし、ページ/行参照を検証し、応答レターの真実性をチェックし、編集が計画を超えていないことを確認します。</p>
+</div>
+<div class="callout">
+<h3>人間の司令官</h3>
+<p>計画を承認し、タスクの粒度を決定し、科学的方向性を判断し、最終改訂を受け入れるか拒否します。</p>
+</div>
+</div>
+<h3>認知負荷の分割</h3>
+<p class="small">大まかな概念図: ワークフローは、ファイル編集の瞬間から難しい推論を排除します。</p>
+<div class="bars">
+<div class="bar-line"><div class="bar-label">AI の直接編集</div><div class="bar-track"><div class="bar-fill" style="width: 92%"></div></div><div class="bar-value">ハイリスク</div></div>
+<div class="bar-line"><div class="bar-label">計画書作成</div><div class="bar-track"><div class="bar-fill" style="width: 70%"></div></div><div class="bar-value">集中した</div></div>
+<div class="bar-line"><div class="bar-label">計画の実行</div><div class="bar-track"><div class="bar-fill" style="width: 42%"></div></div><div class="bar-value">境界のある</div></div>
+<div class="bar-line"><div class="bar-label">PDF 監査</div><div class="bar-track"><div class="bar-fill" style="width: 55%"></div></div><div class="bar-value">検証可能な</div></div>
+</div>
+</section>
+<section id="tables">
+<h2>すぐに理解できる表</h2>
+<h3>問題→スキルの仕組み</h3>
+<table>
+<thead>
+<tr><th>よくある失敗</th><th>プランゲート型ソリューション</th><th>実践的なルール</th></tr>
+</thead>
+<tbody>
+<tr><td>エージェントが変わりすぎる</td><td>計画では、許可されるファイルと場所を正確に定義します。</td><td>計画にない場合は編集しないでください。</td></tr>
+<tr><td>応答レターの超過請求</td><td>場所の主張は、PDF 検査後にのみ追加されます。</td><td>原稿が実際に修正される前に「修正しました」とは決して書かないでください。</td></tr>
+<tr><td>更新履歴が不明瞭になる</td><td>各作業パッケージにはプランと Git コミットがあります。</td><td>1 つの計画、1 つの実行、1 つのコミット。</td></tr>
+<tr><td>大きなタスクがエージェントに過負荷をかける</td><td>大まかな計画は実行前に分割されます。</td><td>曖昧な計画→分割計画。</td></tr>
+<tr><td>新しいセッションはコンテキストを失います</td><td>の <code>references/</code> ディレクトリは外部メモリとして機能します。</td><td>編集する前に、エージェントに関連するプランを読んでもらいます。</td></tr>
+</tbody>
+</table>
+<h3>計画ファイルのチェックリスト</h3>
+<table>
+<thead>
+<tr><th>計画セクション</th><th>何を答えるべきか</th></tr>
+</thead>
+<tbody>
+<tr><td>ソースコメント</td><td>どの査読者/編集者のコメントまたは内部目標がこれを引き起こしましたか?</td></tr>
+<tr><td>診断</td><td>コメントの背後にある本当の懸念は何ですか?</td></tr>
+<tr><td>範囲</td><td>どのファイルと場所が変更される可能性がありますか?</td></tr>
+<tr><td>禁止されている変更</td><td>エージェントが明示的に避けるべきものは何ですか?</td></tr>
+<tr><td>提案された編集</td><td>具体的にはどのような変更を加えるべきでしょうか?</td></tr>
+<tr><td>合格基準</td><td>編集が完了したことはどのようにして確認できるのでしょうか?</td></tr>
+<tr><td>検証</td><td>原稿、返信レター、参考文献、朱書きはどのようにチェックされますか?</td></tr>
+</tbody>
+</table>
+</section>
+<section>
+<h2>2 つのリビジョン モードの比較</h2>
+<div aria-label="Comparison between direct edit and plan-gated edit" class="diagram">
+<svg aria-label="Comparison between direct AI editing and plan-gated editing." height="390" role="img" viewBox="0 0 1040 390" width="1040">
+<defs>
+<marker id="arrow2" markerHeight="10" markerUnits="strokeWidth" markerWidth="10" orient="auto" refX="7" refY="3"><path d="M0,0 L0,6 L8,3 z" fill="#718096"></path></marker>
+</defs>
+<text fill="#b34435" font-size="22" font-weight="850" x="40" y="42">ダイレクト編集モード</text>
+<text fill="#1f8a45" font-size="22" font-weight="850" x="560" y="42">プランゲートモード</text>
+<g transform="translate(40,78)">
+<rect fill="#ffe3df" height="250" rx="24" stroke="#f3b2aa" width="420" x="0" y="0"></rect>
+<text fill="#84281f" font-size="16" font-weight="800" x="28" y="42">査読者コメント</text>
+<path d="M160 38 C205 38 215 64 240 94" fill="none" marker-end="url(#arrow2)" stroke="#b34435" stroke-width="2"></path>
+<text fill="#84281f" font-size="16" font-weight="800" x="252" y="102">AI が今すぐ編集します</text>
+<path d="M270 114 C190 136 330 160 190 190" fill="none" marker-end="url(#arrow2)" stroke="#b34435" stroke-dasharray="6 5" stroke-width="2.2"></path>
+<text fill="#84281f" font-size="14" x="30" y="204">範囲のずれ、複雑な推論、不確実な主張、痛みを伴う後始末。</text>
+<text fill="#84281f" font-size="14" font-weight="800" x="30" y="230">人間が消防士になる。</text>
+</g>
+<g transform="translate(560,78)">
+<rect fill="#dff7e6" height="250" rx="24" stroke="#72d38d" width="420" x="0" y="0"></rect>
+<text fill="#126b32" font-size="16" font-weight="800" x="24" y="42">査読者コメント</text>
+<path d="M158 38 L210 38" fill="none" marker-end="url(#arrow2)" stroke="#1f8a45" stroke-width="2"></path>
+<text fill="#126b32" font-size="16" font-weight="800" x="224" y="42">計画</text>
+<path d="M270 38 L324 38" fill="none" marker-end="url(#arrow2)" stroke="#1f8a45" stroke-width="2"></path>
+<text fill="#126b32" font-size="16" font-weight="800" x="24" y="96">人間の門</text>
+<path d="M116 91 L180 91" fill="none" marker-end="url(#arrow2)" stroke="#1f8a45" stroke-width="2"></path>
+<text fill="#126b32" font-size="16" font-weight="800" x="194" y="96">実行する</text>
+<path d="M272 91 L330 91" fill="none" marker-end="url(#arrow2)" stroke="#1f8a45" stroke-width="2"></path>
+<text fill="#126b32" font-size="16" font-weight="800" x="24" y="150">構築 + 監査 PDF</text>
+<path d="M172 145 L240 145" fill="none" marker-end="url(#arrow2)" stroke="#1f8a45" stroke-width="2"></path>
+<text fill="#126b32" font-size="16" font-weight="800" x="254" y="150">コミット</text>
+<text fill="#126b32" font-size="14" x="24" y="204">限定された範囲、明確な根拠、検証された場所、元に戻せる履歴。</text>
+<text fill="#126b32" font-size="14" font-weight="800" x="24" y="230">人間の遺体の司令官。</text>
+</g>
+</svg>
+</div>
+</section>
+<section id="prompt">
+<h2>標準 Codex 命令</h2>
+<p class="lead">このプロンプトは、チャットの哲学を実行可能なエージェントの指示に変えます。</p>
+<pre><code>You are working on an academic manuscript revision.
 
 First read the relevant plan in references/.
 Do not edit anything outside the plan.
@@ -883,25 +837,23 @@ Update the response letter only with verified changes.
 Generate redlined_main.tex when original_main.tex is available.
 Show git diff summary.
 Commit and push this work package.</code></pre>
-
-      <div class="two-col" style="margin-top:20px;">
-        <div class="callout danger">
-          <h3>Do not say</h3>
-          <p>“Revise the paper according to the reviewer comments.”</p>
-          <p class="small">This is too broad and invites uncontrolled editing.</p>
-        </div>
-        <div class="callout success">
-          <h3>Say instead</h3>
-          <p>“Read <code>references/reviewer2_comment6_reanalysis_plan.md</code>. Apply only the approved edits. Stop if anything is out of scope.”</p>
-          <p class="small">This gives the agent a boundary and a verification path.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="github">
-      <h2>How to use this page in a GitHub repository</h2>
-      <p class="lead">This HTML page can serve two roles: the origin story of the skill and the visual tutorial for new users.</p>
-      <pre><code>paper-revision-agent-skill/
+<div class="two-col" style="margin-top:20px;">
+<div class="callout danger">
+<h3>言わないでください</h3>
+<p>「査読者のコメントに従って論文を修正してください。」</p>
+<p class="small">これは範囲が広すぎるため、管理されない編集が行われる可能性があります。</p>
+</div>
+<div class="callout success">
+<h3>代わりに言ってください</h3>
+<p>「読んで <code>references/reviewer2_comment6_reanalysis_plan.md</code>。承認された編集のみを適用します。範囲外のものがあれば中止してください。」</p>
+<p class="small">これにより、エージェントに境界と検証パスが与えられます。</p>
+</div>
+</div>
+</section>
+<section id="github">
+<h2>GitHub リポジトリでこのページを使用する方法</h2>
+<p class="lead">この HTML ページは、スキルの起源のストーリーと新規ユーザー向けのビジュアル チュートリアルという 2 つの役割を果たすことができます。</p>
+<pre><code>paper-revision-agent-skill/
   README.md
   SKILL.md
   docs/
@@ -914,22 +866,19 @@ Commit and push this work package.</code></pre>
     plan_prompt.md
     apply_prompt.md
     audit_prompt.md</code></pre>
-
-      <h3>Suggested README link</h3>
-      <pre><code>## Origin and tutorial
+<h3>推奨される README リンク</h3>
+<pre><code>## Origin and tutorial
 
 The workflow was derived from a real paper-revision discussion.
 For a readable visual explanation, see:
 
 - [Origin chat and guide](docs/origin-chat.html)</code></pre>
-
-      <div class="callout purple">
-        <h3>Publishing note</h3>
-        <p>This page is intentionally written as a cleaned and translated origin narrative, not a raw private transcript. It keeps the technical method, the useful humor, and the design lessons, while removing unrelated discussion.</p>
-      </div>
-    </section>
-
-    <p class="footer">Plan-Gated Paper Revision Skill · Cleaned origin chat and visual guide · Self-contained HTML</p>
-  </main>
+<div class="callout purple">
+<h3>出版メモ</h3>
+<p>このページは、生の個人的な記録ではなく、意図的にクリーンに翻訳された起源の物語として書かれています。無関係な議論を排除しながら、技術的な手法、有益なユーモア、デザインの教訓を維持します。</p>
+</div>
+</section>
+<p class="footer">Plan-Gated Paper Revision Skill · クリーンなオリジン チャットとビジュアル ガイド · 自己完結型 HTML</p>
+</main>
 </body>
 </html>

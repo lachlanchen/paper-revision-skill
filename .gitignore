@@ -11,3 +11,5 @@
 *.toc
 *.pdf
 .DS_Store
+__pycache__/
+.translation_cache.json
