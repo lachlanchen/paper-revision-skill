@@ -32,6 +32,17 @@ This repository is built to work across agent platforms while keeping [`SKILL.md
 
 AgInTiFlow compatibility requires `@lazyingart/agintiflow >= 0.20.191`, which can import Codex-style `name:` skill frontmatter into SkillMesh by normalizing it to AgInTiFlow-native `id:` and `label:` metadata.
 
+## Companion Skill
+
+Pair this repository with [Paper Critique Skill](https://github.com/lachlanchen/paper-critique-skill):
+
+| Need | Use |
+| --- | --- |
+| Review, critique, score, challenge, or generate reviewer-style comments | [**Paper Critique Skill**](https://github.com/lachlanchen/paper-critique-skill) |
+| Respond to critique, revise manuscript text, build PDFs, generate redlines, or prepare response letters | **Paper Revision Skill** |
+
+In short: critique reviews the paper; revision answers the critique and produces the response package.
+
 ## Why This Exists
 
 AI agents are strong at file editing, builds, search, and bookkeeping. They are less reliable when they must simultaneously decide the scientific strategy, rewrite text, update response letters, compile LaTeX, and infer what should not be touched.

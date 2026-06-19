@@ -1,9 +1,18 @@
 ---
 name: paper-revision-skill
-description: Plan-gated academic manuscript revision workflow for LaTeX papers, supplements, response letters, proof corrections, redlined versions, figure and equation reference checks, reviewer-comment planning, build verification, and submission packaging. Use when Codex needs to edit, review, build, audit, or prepare a revised paper while preserving baselines, scope control, and traceable reasoning.
+description: Plan-gated academic manuscript revision workflow for LaTeX papers, supplements, response letters, proof corrections, redlined versions, figure and equation reference checks, reviewer-response planning, build verification, and submission packaging. Use when Codex needs to revise manuscript text, answer reviewer comments, update response letters, generate redlines, build PDFs, audit revisions, or prepare a revised paper while preserving baselines, scope control, and traceable reasoning.
 ---
 
 # Paper Revision Skill
+
+## Companion Skill Boundary
+
+Use this skill to respond to critique and perform controlled revisions. Use `paper-critique-skill` first when the user asks to review, critique, referee, challenge, score, or write detailed reviewer-style comments without editing the manuscript.
+
+The intended pair is:
+
+- `paper-critique-skill`: review the paper, proposal, PDF, DOCX, or TeX source and produce rigorous critique comments.
+- `paper-revision-skill`: respond to those comments, revise the manuscript, build PDFs, generate redlines, and prepare submission-ready response packages.
 
 ## Core Workflow
 
